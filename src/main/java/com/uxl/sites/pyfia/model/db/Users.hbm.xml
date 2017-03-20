@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:13:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.uxl.sites.pyfia.model.db.Users" table="users" catalog="pyfia">
+        <id name="login" type="string">
+            <column name="login" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" not-null="true" />
+        </property>
+        <set name="usersAttrs" table="users_attr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="login" not-null="true" />
+            </key>
+            <one-to-many class="com.uxl.sites.pyfia.model.db.UsersAttr" />
+        </set>
+    </class>
+</hibernate-mapping>

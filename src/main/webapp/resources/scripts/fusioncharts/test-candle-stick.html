@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>My first chart using FusionCharts Suite XT</title>
+<script type="text/javascript" src="js/fusioncharts.js"></script>
+<script type="text/javascript" src="js/themes/fusioncharts.theme.fint.js"></script>
+</head>
+<body>
+<div id="chartContainer"></div>
+<script type="text/javascript">
+FusionCharts.ready(function(){
+      var revenueChart = new FusionCharts({
+        "type": "candlestick",
+        "renderAt": "chartContainer",
+        "width": "500",
+        "height": "300",
+        "dataFormat": "json",
+        "dataSource": {
+			"chart": {
+				"caption": "Daily Stock Price HRYS",
+				"numberprefix": "$",
+				"vNumberPrefix": " ",
+				"pyaxisname": "Price",
+				"vyaxisname": "Volume (In Millions)",
+				"bgColor": "#ffffff",
+				"showBorder": "1",
+				"canvasBgColor": "#ffffff",
+				"showCanvasBorder": "0",
+				"showAlternateHGridColor": "0",
+				"baseFontColor": "#333333",
+				"baseFont": "Helvetica Neue,Arial",
+				"captionFontSize": "14",
+				"subcaptionFontSize": "14",
+				"subcaptionFontBold": "0",
+				"toolTipColor": "#ffffff",
+				"toolTipBorderThickness": "0",
+				"toolTipBgColor": "#000000",
+				"toolTipBgAlpha": "80",
+				"toolTipBorderRadius": "2",
+				"toolTipPadding": "5",
+				"divlineAlpha": "100",
+				"divlineColor": "#999999",
+				"divlineThickness": "1",
+				"divLineDashed": "1",
+				"divLineDashLen": "1",
+				"divLineGapLen": "1",
+				"plotPriceAs": "CANDLESTICK"
+			},  //chart
+			"categories": [
+				{
+					"category": [
+						{
+							"label": "15 Days ago",
+							"x": "1"
+						},
+						{
+							"label": "8 Days ago",
+							"x": "7"
+						},
+						{
+							"label": "Today",
+							"x": "15"
+						}
+					]
+				} //category0
+			], //categories
+  "dataset":[{
+      "data":[{
+          "open":"24.6",
+          "high":"25.24",
+          "low":"24.58",
+          "close":"25.19",
+          "x":"1",
+          "volume":"17856350"
+        },
+        {
+          "open":"24.36",
+          "high":"24.58",
+          "low":"24.18",
+          "close":"24.41",
+          "x":"2",
+          "volume":"3599252"
+        },
+        {
+          "open":"24.63",
+          "high":"24.66",
+          "low":"24.11",
+          "close":"24.95",
+          "x":"3",
+          "volume":"74685351"
+        },
+        {
+          "open":"24.53",
+          "high":"24.84",
+          "low":"24.01",
+          "close":"24.95",
+          "x":"4",
+          "volume":"49236987"
+        },
+        {
+          "open":"24.84",
+          "high":"24.94",
+          "low":"24.56",
+          "close":"24.93",
+          "x":"5",
+          "volume":"18247006"
+        },
+        {
+          "open":"24.96",
+          "high":"25.03",
+          "low":"24.58",
+          "close":"24.89",
+          "x":"6",
+          "volume":"67419690"
+        },
+        {
+          "open":"25.25",
+          "high":"25.46",
+          "low":"25.11",
+          "close":"25.13",
+          "x":"7",
+          "volume":"95517555"
+        },
+        {
+          "open":"25.27",
+          "high":"25.37",
+          "low":"25.0999",
+          "close":"25.18",
+          "x":"8",
+          "volume":"83656552"
+        },
+        {
+          "open":"25.33",
+          "high":"25.43",
+          "low":"25.06",
+          "close":"25.16",
+          "x":"9",
+          "volume":"42177624"
+        },
+        {
+          "open":"25.38",
+          "high":"25.51",
+          "low":"25.23",
+          "close":"25.38",
+          "x":"10",
+          "volume":"40668662"
+        },
+        {
+          "open":"25.2",
+          "high":"25.78",
+          "low":"25.07",
+          "close":"25.09",
+          "x":"11",
+          "volume":"78602232"
+        },
+        {
+          "open":"25.66",
+          "high":"25.8",
+          "low":"25.35",
+          "close":"25.37",
+          "x":"12",
+          "volume":"10338104"
+        },
+        {
+          "open":"25.77",
+          "high":"25.97",
+          "low":"25.54",
+          "close":"25.72",
+          "x":"13",
+          "volume":"38067037"
+        },
+        {
+          "open":"26.31",
+          "high":"26.35",
+          "low":"25.81",
+          "close":"25.83",
+          "x":"14",
+          "volume":"52104215"
+        },
+        {
+          "open":"26.23",
+          "high":"26.6",
+          "low":"26.2",
+          "close":"26.35",
+          "x":"15",
+          "volume":"46274157"
+        }
+      ]
+    }
+  ]
+		
+        } //datasource
+    } //FusionCharts arg
+	); //FusionCharts constructor
+
+    revenueChart.render();
+})
+</script>
+</body>
+</html>

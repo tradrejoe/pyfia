@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!-- Custom aspects for the Pyfia sample application -->
+<aspectj>
+
+	<weaver>
+		<include within="com.uxl.sites.pyfia..*"/>
+	</weaver>
+
+	<aspects>
+		<aspect name="com.uxl.sites.pyfia.aspects.UsageLogAspect"/>
+		<concrete-aspect name="com.uxl.sites.pyfia.aspects.ApplicationTraceAspect"
+				extends="com.uxl.sites.pyfia.aspects.AbstractTraceAspect">
+			<pointcut name="traced" expression="execution(* com.uxl.sites.pyfia..*.*(..))"/>
+		</concrete-aspect>
+	</aspects>
+
+</aspectj>

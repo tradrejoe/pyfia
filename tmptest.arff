@@ -1,0 +1,9 @@
+@relation ZU
+@attribute ^INDS numeric
+@attribute ^NYY numeric
+@attribute ^OFIN numeric
+@attribute ZU numeric
+@attribute class numeric
+@data
+0.00837423842529783,0.008800995741621076,0.008127259678076815,0.04690990320178701,0.01
+?

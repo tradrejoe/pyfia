@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:13:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.uxl.sites.pyfia.model.db.ClsFin" table="cls_fin" catalog="pyfia">
+        <id name="nm" type="string">
+            <column name="nm" />
+            <generator class="assigned" />
+        </id>
+        <property name="nm2" type="string">
+            <column name="nm2" not-null="true" />
+        </property>
+        <property name="disp" type="string">
+            <column name="disp" length="1000" not-null="true" />
+        </property>
+        <property name="attr0" type="java.lang.Integer">
+            <column name="attr0" />
+        </property>
+        <property name="attr1" type="java.lang.Integer">
+            <column name="attr1" />
+        </property>
+        <property name="attr2" type="java.lang.Integer">
+            <column name="attr2" />
+        </property>
+        <property name="attr3" type="java.lang.Integer">
+            <column name="attr3" />
+        </property>
+    </class>
+</hibernate-mapping>

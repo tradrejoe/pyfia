@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Application context definition for Pyfia Datasource.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+				
+	<!-- ========================= DATASOURCE DEFINITION ========================= -->				
+
+	<!-- Configurer that replaces MavenProject: com.uxl.sites:com.uxl.sites.pyfia:1.0.0-SNAPSHOT @ C:\projects\pyfia\pom.xml placeholders with values from a properties file -->
+	<!-- (in this case, JDBC-related settings for the dataSource definition below) -->
+	<!-- context:property-placeholder location="resources/jdbc.properties"/ -->
+
+	<!-- DataSource configuration for Apache Commons DBCP. -->
+	<!--bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+			p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
+			p:username="${jdbc.username}" p:password="${jdbc.password}"
+			p:testOnBorrow="true" p:validationQuery="SELECT 1 FROM DUAL" 
+			p:poolPreparedStatements="true" p:maxWait="30000"
+			p:accessToUnderlyingConnectionAllowed="true"
+	/-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- JNDI DataSource for JEE environments -->
+	<!--
+	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/pyfia"/>
+	-->
+		
+	<!-- JNDI DataSource for JEE environments -->
+	<!--
+	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/pyfia"/>
+	-->
+
+	<!-- Database initializer. If any of the script fails, the initialization stops. -->
+	<!-- As an alternative, for embedded databases see <jdbc:embedded-database/>. -->
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="${jdbc.initLocation}"/>
+		<jdbc:script location="${jdbc.dataLocation}"/>
+	</jdbc:initialize-database>	
+
+</beans>

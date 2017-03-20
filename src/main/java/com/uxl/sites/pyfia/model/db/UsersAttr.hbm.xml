@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:13:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.uxl.sites.pyfia.model.db.UsersAttr" table="users_attr" catalog="pyfia">
+        <composite-id name="id" class="com.uxl.sites.pyfia.model.db.UsersAttrId">
+            <key-property name="login" type="string">
+                <column name="login" />
+            </key-property>
+            <key-property name="name" type="string">
+                <column name="name" length="2000" />
+            </key-property>
+            <key-property name="val" type="string">
+                <column name="val" length="2000" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="users" class="com.uxl.sites.pyfia.model.db.Users" update="false" insert="false" fetch="select">
+            <column name="login" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

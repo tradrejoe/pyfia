@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 30, 2013 12:13:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.uxl.sites.pyfia.model.db.DfinCorr" table="dfin_corr" catalog="pyfia">
+        <composite-id name="id" class="com.uxl.sites.pyfia.model.db.DfinCorrId">
+            <key-property name="symbol" type="string">
+                <column name="symbol" />
+            </key-property>
+            <key-property name="idx" type="string">
+                <column name="idx" />
+            </key-property>
+            <key-property name="lag" type="int">
+                <column name="lag" />
+            </key-property>
+            <key-property name="years" type="double">
+                <column name="years" precision="22" scale="0" />
+            </key-property>
+            <key-property name="correlation" type="double">
+                <column name="correlation" precision="22" scale="0" />
+            </key-property>
+            <key-property name="lastUpdated" type="timestamp">
+                <column name="last_updated" length="19" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
