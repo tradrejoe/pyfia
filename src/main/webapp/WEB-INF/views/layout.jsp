@@ -25,7 +25,7 @@
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-ngroute.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/ngResource/resource.js' />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.comp.1.0.26.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.31.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.30.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.angular.1.0.23.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.fixedheadertable.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/json.min.js" /> "></script>
