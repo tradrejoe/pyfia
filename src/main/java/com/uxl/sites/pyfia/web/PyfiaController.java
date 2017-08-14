@@ -237,8 +237,8 @@ public class PyfiaController extends BaseController {
 			if (rng<=0)
 				rng = DateUtils.getDiffDays(today, odt);
 			Boolean osd = Boolean.parseBoolean(sd);
+			attrib = attrib.equalsIgnoreCase(UNKNOWN)?"":attrib;
 			logger.debug("attribxx=" + attrib);
-			request.setAttributes(attrib.equalsIgnoreCase(UNKNOWN)?"":attrib);
 			boolean attribHasClz = false;
 			try {
 				StringTokenizer atoks = new StringTokenizer(attrib, ",");
@@ -247,9 +247,14 @@ public class PyfiaController extends BaseController {
 					if (tmpattr.equalsIgnoreCase(cls)) attribHasClz = true;
 				}
 				if (!attribHasClz) {
-					request.setAttributes((attrib!=null && !attrib.equalsIgnoreCase(UNKNOWN)?attrib+",":"")+ cls);
+					if (attrib != null && !attrib.trim().equals("")) {
+						attrib += "," + cls;
+					} else {
+						attrib = cls;
+					}
 				}
 			} catch(Exception e) {}
+			request.setAttributes(attrib);
 			request.setClazz(cls);
 			request.setCase(odt);
 			request.setForecastRange(rng);

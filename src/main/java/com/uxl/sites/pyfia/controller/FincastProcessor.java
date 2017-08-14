@@ -376,7 +376,7 @@ public class FincastProcessor implements IForecastProcessor {
 					List<CorrGraphLink> lstLinks = new ArrayList<CorrGraphLink>();
 					for (int i=0; i<indices.length; i++) {
 						index = indices[i];
-						if (index.equalsIgnoreCase(cls)) continue;
+						//if (index.equalsIgnoreCase(cls)) continue;
 						CKey ck = new CKey(cls, index, rng, hist);
 						Double tmpc = null;
 						try {
