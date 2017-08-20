@@ -134,7 +134,7 @@
 
 				icon: {'src': '/resources/images/mbtglobelogo.png',
 
-				'width': '640px', 'height': '100px', 'margin' : '0px'},
+				'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 				message: '<a target="_blank" href="http://mbtrading.com" style="color:#fffff0;text-decoration:none;"><br/>MB Trading, great execution and cutting edge software platform. One of the low price commission leaders.</a>'
 				},
@@ -143,7 +143,7 @@
 
 				icon: {'src': '/resources/images/l_sm.gif',
 
-				'width': '640px', 'height': '100px', 'margin' : '0px'},
+				'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 				message: '<a target="_blank" href="http://www.elitetrader.com" style="color:#fffff0;text-decoration:none;"><br/>Are you in search of a source for valuable insight into stocks, futures, options, and currencies?  You?ve come to the right place!  At Elite Trader, you can become a part of the leading community of traders...</a>'
 				},
@@ -152,7 +152,7 @@
 
 					icon: {'src': '/resources/images/cboe_pagebar.png',
 
-					'width': '640px', 'height': '100px', 'margin' : '0px'},
+					'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 					message: '<a target="_blank" href="http://www.cboe.com" style="color:#fffff0;text-decoration:none;"><br/>Welcome to CBOE.com: the definitive source for options trading information. CBOE is the world\'s largest options exchange and the leader in product innovation, options education and trading volume.</a>'
 				},
@@ -161,7 +161,7 @@
 
 					icon: {'src': '/resources/images/yahoo-finance-940x350.jpg',
 
-					'width': '640px', 'height': '100px', 'margin' : '0px'},
+					'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 					message: '<a target="_blank" href="http://finance.yahoo.com" style="color:#fffff0;text-decoration:none;"><br/>At Yahoo! Finance, you get free stock quotes, up to date news, portfolio management resources, international market data, message boards, and mortgage rates ...</a>'
 				}
