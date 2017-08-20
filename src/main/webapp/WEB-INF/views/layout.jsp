@@ -18,14 +18,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery-1.11.1.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery-ui-1.11.1.custom/jquery-ui.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/roundabout.js" />"></script>
 <!-- Load jquery before angularjs to use jquery style selector with the angular.element() function. -->
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-1.2.16.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-directives.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-ngroute.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/ngResource/resource.js' />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.comp.1.0.27.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.30b.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.31.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.angular.1.0.23.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.tubular.1.0.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.fixedheadertable.js" />"></script>
@@ -262,5 +261,6 @@ $(window).on('beforeunload', function() {
 <script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amcharts.themes.light.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/tiny_mce/tiny_mce.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/scrollbar.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/roundabout.js" />"></script>
 </body>
 </html>

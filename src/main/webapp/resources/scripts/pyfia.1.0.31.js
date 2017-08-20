@@ -134,7 +134,7 @@
 
 				icon: {'src': '/resources/images/mbtglobelogo.png',
 
-				'width': '640px', 'height': '100px', 'margin' : '0px'},
+				'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 				message: '<a target="_blank" href="http://mbtrading.com" style="color:#fffff0;text-decoration:none;"><br/>MB Trading, great execution and cutting edge software platform. One of the low price commission leaders.</a>'
 				},
@@ -143,16 +143,16 @@
 
 				icon: {'src': '/resources/images/l_sm.gif',
 
-				'width': '640px', 'height': '100px', 'margin' : '0px'},
+				'width': '640px', 'height': '80px', 'margin' : '0px'},
 
-				message: '<a target="_blank" href="http://www.elitetrader.com" style="color:#fffff0;text-decoration:none;"><br/>Are you in search of a source for valuable insight into stocks, futures, options, and currencies?  You�ve come to the right place!  At Elite Trader, you can become a part of the leading community of traders...</a>'
+				message: '<a target="_blank" href="http://www.elitetrader.com" style="color:#fffff0;text-decoration:none;"><br/>Are you in search of a source for valuable insight into stocks, futures, options, and currencies?  You?ve come to the right place!  At Elite Trader, you can become a part of the leading community of traders...</a>'
 				},
 
 				{zindex: 10, bgcolorFrom: '#202020', bgcolorTo: '#181818',
 
 					icon: {'src': '/resources/images/cboe_pagebar.png',
 
-					'width': '640px', 'height': '100px', 'margin' : '0px'},
+					'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 					message: '<a target="_blank" href="http://www.cboe.com" style="color:#fffff0;text-decoration:none;"><br/>Welcome to CBOE.com: the definitive source for options trading information. CBOE is the world\'s largest options exchange and the leader in product innovation, options education and trading volume.</a>'
 				},
@@ -161,7 +161,7 @@
 
 					icon: {'src': '/resources/images/yahoo-finance-940x350.jpg',
 
-					'width': '640px', 'height': '100px', 'margin' : '0px'},
+					'width': '640px', 'height': '80px', 'margin' : '0px'},
 
 					message: '<a target="_blank" href="http://finance.yahoo.com" style="color:#fffff0;text-decoration:none;"><br/>At Yahoo! Finance, you get free stock quotes, up to date news, portfolio management resources, international market data, message boards, and mortgage rates ...</a>'
 				}
@@ -189,59 +189,48 @@
 			}
 		},
 		noresize: false,
-		init: function() {
-			document.body.style.margin = "0px";
-			/*if (BrowserDetect.OS != 'iPad' && BrowserDetect.OS != 'iPhone/iPod')
-				pyfia.config.topmenu.menuitems.push({'text' : 'Data', 'margin' : '10px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px',
-						'submenuitems' : [
-						    {'text' : 'Correlation', 'margin' : '0px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px', 'height': '45px',
-						    'bgcolor': '#181818', opacity: 0.7, zindex: 11, onclick: function() { pyfia.show_data_correlation();}}
-						 ]
-					});	*/
-			pyfia.config.topmenu.menuitems.push({'text' : 'Forecast', 'margin' : '10px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px',
-					'submenuitems' : [
-					    {'text' : 'Equity', 'margin' : '0px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px', 'height': '45px',
-					    'bgcolor': '#181818', opacity: 0.7, zindex: 11, onclick: function() { pyfia.show_ppanel();}}
-					 ]
-				});
-			this.topmenu = new pf.comp.topmenu(pyfia.config.topmenu);
-			this.toolbar = new pf.comp.vtoolbar(pyfia.config.toolbar);
-			this.ribbon = (new pf.comp.ribbon(pyfia.config.ribbon)).init();
-
-			setInterval(this.ribbon.init, pyfia.config.ribbon.pause);
-
-			this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
-			this.show_ppanel();
-			window.onresize = function() { location.reload(true); };
+		bgVid: {
+			list: [{videoId: 'D_XuLVEsS2M', start: 8}, 
+				{videoId: '3uH3D4i-yNs', start: 0},
+				{videoId: 'PoClrqhEfm0', start: 0}, 
+				{videoId: 'ssyFx8tuYJY', start: 0}, 
+				{videoId: 'MHPlR3G3UZI', start: 0}],
+			getVid: function() { return this.list[Math.round((this.list.length-1)*Math.random())]; }
 		},
-		init_bootstrap: function() {
+//		init: function() {
+//			document.body.style.margin = "0px";
+//			/*if (BrowserDetect.OS != 'iPad' && BrowserDetect.OS != 'iPhone/iPod')
+//				pyfia.config.topmenu.menuitems.push({'text' : 'Data', 'margin' : '10px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px',
+//						'submenuitems' : [
+//						    {'text' : 'Correlation', 'margin' : '0px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px', 'height': '45px',
+//						    'bgcolor': '#181818', opacity: 0.7, zindex: 11, onclick: function() { pyfia.show_data_correlation();}}
+//						 ]
+//					});	*/
+//			pyfia.config.topmenu.menuitems.push({'text' : 'Forecast', 'margin' : '10px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px',
+//					'submenuitems' : [
+//					    {'text' : 'Equity', 'margin' : '0px', 'separation' : '16px', 'color': '#ffffff', 'width': '70px', 'height': '45px',
+//					    'bgcolor': '#181818', opacity: 0.7, zindex: 11, onclick: function() { pyfia.show_ppanel();}}
+//					 ]
+//				});
+//			this.topmenu = new pf.comp.topmenu(pyfia.config.topmenu);
+//			this.toolbar = new pf.comp.vtoolbar(pyfia.config.toolbar);
+//			this.ribbon = (new pf.comp.ribbon(pyfia.config.ribbon)).init();
+//
+//			setInterval(this.ribbon.init, pyfia.config.ribbon.pause);
+//			//retiring sliding background images, use random videos
+//			//this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
+//			this.show_ppanel();
+//			window.onresize = function() { location.reload(true); };
+//		},
+		init: function() {
 			if (pyfia.fullui) {
 				pf.comp.noresize = true;
 				this.ribbon = (new pf.comp.ribbon($.extend({}, pyfia.config.ribbon, {mheight: pyfia.getBottom}))).init();
 				setInterval(this.ribbon.init, pyfia.config.ribbon.pause);				
-				this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
+				//this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
 				$(document.body).append(this.fcbtn);
-				pf.comp.cbtn = document.createElement('button');
-				var cbtn = pf.comp.cbtn;
-				cbtn.id = 'centerbtn';
-				cbtn.style.width = '240px';
-				cbtn.style.height = '70px';
-				cbtn.style.position = 'absolute';
-				cbtn.style.background = 'transparent';
-				cbtn.style.borderRadius = '8px';
-				cbtn.style.border = '2px solid #ffffff';
-				cbtn.cursor = 'pointer';
-				cbtn.color = '#ffffff';				
-				cbtn.innerHTML = '<i style="color:#ffffff  !important;" class="fa fa-magic"></i>&nbsp;<span style="color:#ffffff !important;font-weight:700 !important;font-size: 16pt;font-color:#ffffff !important;">Financial Forecast</span>';
-				cbtn.onclick = function() { 
-					if (pf.comp.cbtn.style.display=='none') return;
-					pf.comp.noresize = true;
-					pyfia.show_ppanel();
-					$('.navbar-collapse').toggle();
-					pf.comp.noresize = false; 
-				};
-				document.body.appendChild(cbtn);
-				pf.center($('#'+cbtn.id));
+				pf.comp.cbtn = document.getElementById('centerbtn');
+				pf.center($('#centerbtn'));
 				pyfia.config.lastWindowHeight = $(window).innerHeight();
 				pyfia.config.lastWindowWidth = $(window).innerWidth();
 				$(window).resize(function(evt) {
@@ -272,6 +261,13 @@
 				pf.comp.noresize = false;
 			}
 		},
+		click_centerbtn: function() { 
+			if (typeof pf.comp.cbtn !== undefined && pf.comp.cbtn != null && pf.comp.cbtn.style.display=='none') return;
+			pf.comp.noresize = true;
+			pyfia.show_ppanel();
+			$('.navbar-collapse').toggle();
+			pf.comp.noresize = false; 
+		},
 		hide_cbtn: function() { if (pf.comp.cbtn) pf.comp.cbtn.style.display = 'none'; },
 		show_cbtn: function() { if (pf.comp.cbtn) pf.comp.cbtn.style.display = 'block'; },
 		show_warning: function(msg) {
@@ -283,23 +279,9 @@
 		show_ppanel: function() {
 			if (pyfia.activePanel) pyfia.activePanel.hide();
 			if (!this.panel) {
-				this.panel = new pf.comp.panel.forecastWizard0({id: 'mainPanelWizard0', predictors: pyfia.predictors, 
+				this.panel = new pf.comp.panel.forecast({id: 'mainPanel', predictors: pyfia.predictors, 
 					title: 'Forecast', draggable: false, callbackShow: pyfia.hide_cbtn, callbackHide: pyfia.show_cbtn,
-					height: pf.comp.util.getDlgHeight(), mheight: pyfia.getHeight, mbottom: pyfia.getBottom, arbtn: 
-					[{lbl: 'Next', fn: function() { show_ppanel1(); }}]});
-			}
-			pyfia.activePanel = this.panel;
-			this.panel.show();
-			if (this.toolbar && this.toolbar.show) this.toolbar.show();
-		},
-		show_ppanel1: function() {
-			if (pyfia.activePanel) pyfia.activePanel.hide();
-			if (!this.panel) {
-				this.panel = new pf.comp.panel.forecastWizard1({id: 'mainPanelWizard1', predictors: pyfia.predictors, 
-					title: 'Forecast', draggable: false, callbackShow: pyfia.hide_cbtn, callbackHide: pyfia.show_cbtn,
-					height: pf.comp.util.getDlgHeight(), mheight: pyfia.getHeight, mbottom: pyfia.getBottom, arbtn: 
-					[{lbl: 'Previous', fn: function() { show_ppanel(); }},
-					 {lbl: 'Predict', fn: function() { angular.element(document.body).scope().$apply(function() { $scope.predict(); }); } }]});
+					height: pf.comp.util.getDlgHeight(), mheight: pyfia.getHeight, mbottom: pyfia.getBottom});
 			}
 			pyfia.activePanel = this.panel;
 			this.panel.show();
@@ -455,7 +437,8 @@
             			"open": casevstro,
             			"high": casevstrh,
             			"low": casevstrl,
-						"close": casevstr
+						"close": casevstr,
+						"volume": casevstrsd
 					});
             	} catch(err) {}
             }
@@ -742,7 +725,7 @@ pf.comp.panel.forecastResult = function(cfg) {
 		}
 		var dirstr = (pyfia.data.predictionLabel==1 ? 'up' : 'down') + ' <img style="width:20px;height:20px;" src="/resources/images/' +
 			(pyfia.data.predictionLabel==1 ? 'uparrow.png' : 'downarrow.png') + '"/> ';
-		var content = '<div id="predMsg" style="text-align:left;"><nobr>'+(pyfia.data.clazz+'').toUpperCase() + ' will <br/>go ' + dirstr +
+		var content = '<div id="predMsg" style="text-align:left;"><nobr>'+(pyfia.data.clazz+'').toUpperCase() + ' will go ' + dirstr +
 			'to $' + pyfia.data.predVal + ' by ' + pyfia.data.target + 
 			'.&nbsp;&nbsp;&nbsp;&nbsp;<button style="position:absolute;right:20px;top:40px;z-index:2000;" class="pf-button-forms" '+
 			'onclick="javascript:var $scope = angular.element(document.body).scope(); $scope.$apply(function(){$scope.chart();});"'+
@@ -750,14 +733,15 @@ pf.comp.panel.forecastResult = function(cfg) {
 			'</nobr></div>';
 
 		this.$super.show();
-		if (typeof pyfia.reldg !== 'undefined' && pyfia.reldg != null) {
+		/* if (typeof pyfia.reldg !== 'undefined' && pyfia.reldg != null) {
 			var wpadding = 6;
 			var defaultImgHeight = 50;
 			if (pyfia.reldg) {
-				content += '<img id="imgreldg" onload="javascript:pf.comp.fSizeReldg(\'imgreldg\', false);" alt="relational diagram" src="'+pyfia.reldg+'" />';
+				//content += '<img id="imgreldg" onload="javascript:pf.comp.fSizeReldg(\'imgreldg\', false);" alt="relational diagram" src="'+pyfia.reldg+'" />';
+				content += '<br/><br/><center><img id="imgreldg" alt="relational diagram" src="'+pyfia.reldg+'" /></center>';
 			}
 			this.lst.innerHTML = content;
-		} else {
+		} else { */
 			// D3		
 			this.lst.innerHTML = content;
 			this.relctn = document.createElement("div");
@@ -838,7 +822,7 @@ pf.comp.panel.forecastResult = function(cfg) {
 			//    Updates the display
 			//	graph.getModel().endUpdate();
 			//}
-		}
+		//}
 	};
 };
 pf.comp.fSizeReldg = function(corrgraphid, bstretch) {
@@ -851,7 +835,6 @@ pf.comp.fSizeReldg = function(corrgraphid, bstretch) {
 	if (bstretch || imgreldg.width()>maxwidth) imgreldg.width(maxwidth); oimgreldg.style.width = maxwidth + 'px';
 	if (bstretch || imgreldg.height()>maxheight) imgreldg.height(maxheight); oimgreldg.style.height = maxheight + 'px';
 };
-
 pf.comp.panel.forecast = function(cfg) {
 	//pf.comp.panel.call(this, cfg);
 	this.$super = new pf.comp.panel(cfg);
@@ -876,9 +859,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.lst.setAttribute("cellspacing", "4");
 	this.lst.setAttribute("border", "0");
 	this.lst.setAttribute("nowrap", "nowrap");
-	//this.container.appendChild(this.lst);
 	this.panel.appendChild(this.lst);
-	//this.panel.appendChild(this.container);
 
 	var li = document.createElement('tr');
 
@@ -974,6 +955,31 @@ pf.comp.panel.forecast = function(cfg) {
 	li.appendChild(this.histctn);
 
 	this.lst.appendChild(li);
+
+	/*li = document.createElement('tr');
+
+	this.sdlbl = document.createElement('td');
+	this.sdlbl.style.fontWeight = '900';
+	this.sdlbl.style.marginTop = '5px';
+	this.sdlbl.style.fontSize = '16px';
+	this.sdlbl.innerHTML = 'Use Volume Data&nbsp;&nbsp;&nbsp;';
+	this.sdlbl.style.textAlign = 'right';
+	this.sdlbl.style.verticalAlign = 'middle';
+	this.sdlbl.setAttribute("align", "right");
+	this.sdlbl.setAttribute("valign", "middle");
+	li.appendChild(this.sdlbl);
+
+	this.sdctn = document.createElement('td');
+	this.sdctn.colspan = 2;
+	this.sd = document.createElement('input');
+	this.sd.type = 'checkbox';
+	this.sdctn.style.textAlign = 'left';
+	this.sdctn.style.verticalAlign = 'middle';
+	this.sdctn.setAttribute("align", "left");
+	this.sdctn.setAttribute("valign", "middle");
+	this.sd.id = 'sd';
+	this.sdctn.appendChild(this.sd);
+	li.appendChild(this.sdctn);*/
 
 	this.lst2 = document.createElement('table');
 	this.lst2.id = 'predlbl';
@@ -1114,7 +1120,7 @@ pf.comp.panel.forecast = function(cfg) {
 		}
 		if (!this.loaded) {
 			this.load();
-			var hpadding = 20;
+			var hpadding = 60;
 			var tmpheight = $('#'+this.panel.id).height() - $('#title_'+this.panel.id).height() - 
 				$('#predfrm').height() - $('#'+this.pnlmsg.id).height() - hpadding;
 			if (pf.comp.isNotNormal()) {
@@ -1127,7 +1133,7 @@ pf.comp.panel.forecast = function(cfg) {
 				$('[role="tab"]').each(function(){
 					$(this).css({'font-size': '10px', 'font-weight': 700});
 				});
-				tmp.height(tmpheight);
+				//tmp.height(tmpheight);
 			}
 			this.loaded=true;
 		}
@@ -1149,298 +1155,6 @@ pf.comp.panel.forecast = function(cfg) {
 		});
 	};
 };
-
-pf.comp.panel.forecastWizard0 = function(cfg) {
-	//pf.comp.panel.call(this, cfg);
-	this.$super = new pf.comp.panelWizard(cfg);
-	this.$super.id = 'forecastPanelWizard0';
-	$.extend(this, this.$super);
-	this.loaded = false;
-	this.predictors = cfg.predictors;
-	this.panel.style.opacity = .75;
-	this.panel.style.backgroundColor = '#fffff0';
-	this.panel.style.textAlign = 'left';
-	this.panel.style.padding = '0px';
-	this.lst = document.createElement('table');
-	this.lst.id = 'predfrm';
-	this.lst.align = "center";
-	this.lst.border = "3";
-	this.lst.cellSpacing = "4";
-	this.lst.cellPadding = "4";
-	this.lst.style.textAlign = 'center';
-	this.lst.style.width = '90%';
-	this.lst.style.borderSpacing = "4px";
-	this.lst.setAttribute("cellpadding", "4");
-	this.lst.setAttribute("cellspacing", "4");
-	this.lst.setAttribute("border", "0");
-	this.lst.setAttribute("nowrap", "nowrap");
-	//this.container.appendChild(this.lst);
-	this.panel.appendChild(this.lst);
-	//this.panel.appendChild(this.container);
-
-	var li = document.createElement('tr');
-
-	this.searchlbl = document.createElement('td');
-	this.searchlbl.style.fontWeight = '900';
-	this.searchlbl.style.marginTop = '5px';
-	this.searchlbl.style.fontSize = '16px';
-	this.searchlbl.style.display = 'table-cell';
-	this.searchlbl.style.textAlign = 'right';
-	this.searchlbl.style.verticalAlign = 'middle';
-	this.searchlbl.setAttribute("align", "right");
-	this.searchlbl.setAttribute("valign", "middle");
-	//this.searchlbl.style.width = '20%';
-	this.searchlbl.style.width = '20px';
-	this.searchlbl.style.whiteSpace = "nowrap";
-	this.searchlbl.style.display = 'table-cell';
-	this.searchlbl.innerHTML = 'Stock Symbol&nbsp;&nbsp;&nbsp;';
-	li.appendChild(this.searchlbl);
-
-	this.searchctn = document.createElement('td');
-	this.search = document.createElement('input');
-	this.search.id = 'symbol';
-	this.search.style.borderStyle = 'solid';
-	this.search.style.borderWidth = '1px';
-	this.search.style.borderColor = '#00000f';
-	this.search.style.cssFloat = 'left';
-	this.search.style.fontSize = '16px';
-	this.search.style.width = '100%';
-	this.search.style.whiteSpace = "nowrap";
-	this.search.style.display = 'table-cell';	
-	this.searchctn.style.textAlign = 'left';
-	this.searchctn.appendChild(this.search);
-	li.appendChild(this.searchctn);
-	this.lst.appendChild(li);
-
-	li = document.createElement('tr');
-
-	this.histlbl = document.createElement('td');
-	this.histlbl.style.fontWeight = '900';
-	this.histlbl.style.marginTop = '5px';
-	this.histlbl.style.fontSize = '16px';
-	this.histlbl.innerHTML = 'History (Years)&nbsp;&nbsp;&nbsp;';
-	this.histlbl.style.textAlign = 'right';
-	this.histlbl.style.verticalAlign = 'middle';
-	this.histlbl.setAttribute("align", "right");
-	this.histlbl.setAttribute("valign", "middle");
-	this.histlbl.style.whiteSpace = "nowrap";
-	this.histlbl.style.display = 'table-cell';
-	li.appendChild(this.histlbl);
-
-	this.histctn = document.createElement('td');
-	this.histctn.style.textAlign = 'left';
-	this.hist = document.createElement('input');
-	this.hist.style.borderStyle = 'solid';
-	this.hist.style.borderWidth = '1px';
-	this.hist.style.borderColor = '#00000f';
-	this.hist.style.fontSize = '16px';
-	this.hist.style.width = '100%';
-	this.hist.id = 'history';
-	this.hist.style.whiteSpace = "nowrap";
-	this.hist.style.display = 'table-cell';	
-	this.histctn.appendChild(this.hist);
-	li.appendChild(this.histctn);
-	this.lst.appendChild(li);
-	
-	li = document.createElement('tr');
-	this.callbl = document.createElement('td');
-	this.callbl.style.fontWeight = '900';
-	this.callbl.style.marginTop = '5px';
-	this.callbl.style.fontSize = '16px';
-	this.callbl.style.textAlign = 'right';
-	this.callbl.style.verticalAlign = 'top';
-	this.callbl.setAttribute("align", "right");
-	this.callbl.setAttribute("valign", "top");
-	this.callbl.style.whiteSpace = "nowrap";
-	this.callbl.style.display = 'table-cell';
-	this.callbl.innerHTML = 'Target Date&nbsp;&nbsp;&nbsp;';
-	li.appendChild(this.callbl);
-
-	this.calctn = document.createElement('td');
-	this.calctn.style.textAlign = 'left';
-	this.divDate = document.createElement('div');
-	this.divDate.style.textAlign = 'middle';
-	this.divDate.id = 'targetDate';
-	this.calctn.appendChild(this.divDate);	
-	/*this.cal = document.createElement('input');
-	this.cal.style.borderStyle = 'solid';
-	this.cal.style.borderWidth = '1px';
-	this.cal.style.borderColor = '#00000f';
-	this.cal.style.fontSize = '16px';
-	this.cal.style.display = 'table-cell';
-	this.cal.style.width = '100%';
-	this.cal.id = 'targetDate';
-	this.calctn.appendChild(this.cal);*/
-	li.appendChild(this.calctn);
-	this.initCal = false;
-	this.lst.appendChild(li);
-	
-	this.show = function() {
-		this.$super.show();
-		if (!this.initCal) {
-			try {
-				$("#targetDate").datepicker({minDate: 1, maxDate: "30D", opacity: 0.75});
-				//$("#targetDate").datepicker();
-			} catch(e) { }
-			this.initCal = true;
-		}
-		if (!this.loaded) {
-			this.load();
-			var hpadding = 40;
-			var tmpheight = $('#'+this.panel.id).height() - $('#title_'+this.panel.id).height() - 
-				$('#predfrm').height() - $('#'+this.pnlmsg.id).height() - hpadding;
-			this.loaded=true;
-		}
-	};
-	this.load = function() {
-		var strdata = $.cookie('data.pyfia.com');
-		if (!strdata) return;
-		var req = JSON.parse(strdata);
-		$('#symbol').val(req.cls);
-		$("#targetDate").val(req.dt);
-		$('#history').val(req.hist);
-	};
-};
-
-pf.comp.panel.forecastWizard1 = function(cfg) {
-	//pf.comp.panel.call(this, cfg);
-	this.$super = new pf.comp.panelWizard(cfg);
-	this.$super.id = 'forecastPanelWizard1';
-	$.extend(this, this.$super);
-	this.loaded = false;
-	this.predictors = cfg.predictors;
-	this.panel.style.opacity = .75;
-	this.panel.style.backgroundColor = '#fffff0';
-	this.panel.style.textAlign = 'left';
-	this.panel.style.padding = '0px';
-	this.initCal = false;
-
-	this.pprompt = document.createElement('div');
-	this.pprompt.style.textAlign = 'center';
-	this.pprompt.style.verticalAlign = 'middle';
-	this.pprompt.style.fontWeight = 900;
-	this.pprompt.innerHTML = '&nbsp;&nbsp;Choose major market indices besides stock\'s historical price:';
-	this.panel.appendChild(this.pprompt);
-	
-	function getSelectHtml(id) {
-		var buf = '<div style="width:100%;text-align:left;"><select  style="width:90%;" multiple="multiple" id="' + id +'">';
-		for (var igp = 0; igp < pyfia.grouped_predictors.length; igp++) {
-			var opgroup = pyfia.grouped_predictors[igp];
-			var pgroup = opgroup.group;
-			var list = opgroup.list;
-			buf += '<optgroup label="'+pgroup+'">';
-			for (var il = 0; il<list.length; il++) {
-				var ilsymbol = list[il].symbol;
-				var ildesc = list[il].desc;
-				buf += '<option value="'+ilsymbol+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ilsymbol + ' - '+ ildesc+'</option>';
-			}
-			buf += '</optgroup>';
-		}
-		buf += '</select></div>';
-		return buf;
-	} //end getSelectHtml
-	function createIdxTabs(pnl) {
-		var divtabs = document.createElement('div');
-		divtabs.style.margin = '3px';
-		divtabs.id = 'tabspredictor';
-		pnl.appendChild(divtabs);
-		var ultabs = document.createElement('ul');
-		divtabs.appendChild(ultabs);
-		for (var igp = 0; igp < pyfia.grouped_predictors.length; igp++) {
-			var opgroup = pyfia.grouped_predictors[igp];
-			var pgroup = opgroup.group;
-			var list = opgroup.list;
-			var litab = document.createElement('li');
-			var atab = document.createElement('a');
-			atab.innerHTML = pgroup;
-			var tabid = 'tab-' + pgroup;
-			atab.href = '#'+tabid;
-			litab.appendChild(atab);
-			ultabs.appendChild(litab);
-			var divtab = document.createElement('div');
-			divtab.style.overflowX = 'hidden';
-			divtab.style.overflowY = 'scroll';
-			try {
-				divtab.style.height = (parseInt(pnl.style.height)/5) + 'px';
-			} catch(e) {}
-			divtab.id = tabid;
-			divtabs.appendChild(divtab);
-			for (var il = 0; il<list.length; il++) {
-				try {
-				var ilsymbol = list[il].symbol;
-				var ildesc = list[il].desc;
-				var ildiv = document.createElement('div');
-				ildiv.style.whiteSpace = 'nowrap';
-				ildiv.style.clear = 'right';
-				ildiv.style.width = '100%';
-				ildiv.style.textAlign = 'left';
-				divtab.appendChild(ildiv);
-				var pinput = document.createElement('input');
-				pinput.type = 'checkbox';
-				//pinput.style.cssFloat = 'left';
-				//pinput.style.display = 'table-cell';
-				pinput.id = 'pinput';
-				pinput.value = ilsymbol;
-				ildiv.appendChild(pinput);
-				var pspan = document.createElement('span');
-				//pspan.style.width= '80%';
-				//pspan.style.cssFloat = 'right';
-				pspan.style.textAlign = 'left';
-				//pspan.style.display = 'table-cell';
-				pspan.style.fontSize = '14px';
-				pspan.style.fontWeight = '700';
-				pspan.innerHTML = '&nbsp;&nbsp;&nbsp;'+(!/^\^/.test(ilsymbol) ? '&nbsp;' : '') + ilsymbol + ' - '+ ildesc;
-				ildiv.appendChild(pspan);
-				} catch(e) {
-					if (typeof console !== 'undefined' && console != null && typeof console.log !== 'undefined' && console.log != null) {console.log('error: ' + e);}
-				}
-			}
-		}
-	} //end createIdxTabs
-	if (pf.comp.isNotNormal()) {
-		this.ctnpred = document.createElement('div');
-		this.ctnpred.colspan = 3;
-		this.ctnpred.setAttribute('colspan', 3);
-		this.ctnpred.align = 'center';
-		this.ctnpred.setAttribute('align', 'center');	
-		this.ctnpred.style.textAlign = 'center';
-		this.ctnpred.innerHTML = getSelectHtml('predLst');
-		this.ctnpred.appendChild(this.ctnpred);
-	} else {
-		createIdxTabs(this.panel);
-	}
-	this.show = function() {
-		this.$super.show();
-		if (!this.initCal) {
-			try {
-				$("#targetDate").datepicker({minDate: 1, maxDate: "30D", opacity: 0.75});
-				//$("#targetDate").datepicker();
-			} catch(e) { }
-			this.initCal = true;
-		}
-		if (!this.loaded) {
-			this.load();
-			var hpadding = 40;
-			var tmpheight = $('#'+this.panel.id).height() - $('#title_'+this.panel.id).height() - 
-			$('#'+this.pnlmsg.id).height() - hpadding;
-			$('#predLst').dropdownchecklist({maxDropHeight: tmpheight});
-			this.loaded=true;
-		}
-	};
-	this.load = function() {
-		var strdata = $.cookie('data.pyfia.com');
-		if (!strdata) return;
-		var req = JSON.parse(strdata);
-		var arp = ',' + req.attrib + ',';
-		(pf.comp.isNotNormal() ? $("#predLst option") : $("[id='pinput']")).each(function(){
-			$(this).attr('checked', arp.indexOf(','+$(this).val()+',')>-1);
-			$(this).attr('selected', arp.indexOf(','+$(this).val()+',')>-1);
-			$(this).prop('checked', arp.indexOf(','+$(this).val()+',')>-1);
-			$(this).prop('selected', arp.indexOf(','+$(this).val()+',')>-1);
-		});
-	};
-};
-
 
 pf.comp.panel.chart = function(cfg) {
 	this.chart = function() {
@@ -1549,6 +1263,28 @@ pf.comp.panel.chart = function(cfg) {
 			if (console && typeof(console)!=='undefined') console.log(err && err.message ? err.message : 'Error drawing chart.');
 		}	
 	}
+	this.volumeChart = function() {
+		  var chart = AmCharts.charts[ 0 ];
+		  if ( chart.panels.length == 1 ) {
+		    var newPanel = new AmCharts.StockPanel();
+		    newPanel.allowTurningOff = true;
+		    newPanel.title = "Volume";
+		    newPanel.showCategoryAxis = false;
+
+		    var graph = new AmCharts.StockGraph();
+		    graph.valueField = "volume";
+		    graph.fillAlphas = 0.15;
+		    newPanel.addStockGraph( graph );
+
+		    var legend = new AmCharts.StockLegend();
+		    legend.markerType = "none";
+		    legend.markerSize = 0;
+		    newPanel.stockLegend = legend;
+
+		    chart.addPanelAt( newPanel, 1 );
+		    chart.validateNow();
+		  }		
+	}
 	//pf.comp.panel.call(this, cfg);
 	this.$super = new pf.comp.panel(cfg);
 	$.extend(this, this.$super);
@@ -1562,6 +1298,7 @@ pf.comp.panel.chart = function(cfg) {
 	this.show = function() {
 		this.$super.show();
 		this.chart();
+		this.volumeChart();
 	};
 };
 
@@ -1765,60 +1502,93 @@ pf.comp.panel.contact = function(cfg) {
 	this.panel.style.backgroundColor = '#fffff0';
 	this.panel.style.textAlign = 'center';
 	this.panel.style.padding = '0px';
-	this.panel.innerHTML += '<button style="position:absolute;right:20px;top:50px;z-index:2000;" class="pf-button-forms" id="contactSend" onclick="javascript:var $scope=angular.element(document.body).scope(); $scope.$apply(function(){ $scope.contact_us();});"><i class="fa fa-paper-plane"></i>&nbsp;Send</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	
 	this.pbody = document.createElement('table');
 	this.pbody.id = "bodyContactus";
 	this.pbody.setAttribute("width", "100%");
 	this.pbody.setAttribute("cellpadding", "0");
-	this.pbody.setAttribute("cellspacing", "3");
+	this.pbody.setAttribute("cellspacing", "0");
 	this.pbody.cellpadding = 0;
 	this.pbody.cellspacing = 0;
 	this.pbody.style.width = '100%';
 	$('#'+this.pbody.id).css({width: '100%'});
-	//From
+	//From Row
 	var tmptr = document.createElement('tr');
 	tmptr.id = 'rowContactFrom';
 	this.pbody.appendChild(tmptr);
+	//From Label
 	var tmptd = document.createElement('td');
-	tmptd.setAttribute('width', '20%');
-	tmptd.width = '20%';
-	tmptd.style.width = '20%';
+	tmptd.setAttribute('width', '10%');
+	tmptd.width = '10%';
+	tmptd.style.width = '10%';
 	tmptd.style.height = '24px';
 	tmptd.align = 'right';
 	tmptd.setAttribute('align', 'right');
-	tmptd.innerHTML = 'From:';
+	tmptd.style.verticalAlign = 'top';
+	tmptd.verticalAlign = 'top';
+	tmptd.setAttribute('verticalAlign', 'top');
+	tmptd.innerHTML = 'From:&nbsp;&nbsp;&nbsp;';
 	tmptr.appendChild(tmptd);
+	//From Input
 	tmptd = document.createElement('td');
 	tmptd.setAttribute('width', '80%');
 	tmptd.width = '80%';
 	tmptd.style.height = '24px';
 	tmptd.align = 'left';
 	tmptd.setAttribute('align', 'left');
-	tmptd.innerHTML = '<input type="text" id="contactFrom" name="contactFrom" style="border:1px solid #cccccc;">';
+	tmptd.style.verticalAlign = 'top';
+	tmptd.verticalAlign = 'top';
+	tmptd.setAttribute('verticalAlign', 'top');	
+	tmptd.innerHTML = '<input type="text" id="contactFrom" name="contactFrom" style="width:90%; border:1px solid #00000f;border-radius:0px;">';
 	tmptr.appendChild(tmptd);
-	//Subject
+	//Send Button
+	tmptd = document.createElement('td');
+	tmptd.setAttribute('width', '10%');
+	tmptd.width = '10%';
+	tmptd.style.height = '24px';
+	tmptd.align = 'left';
+	tmptd.setAttribute('align', 'left');
+	tmptd.innerHTML = '<button class="pf-button-forms" id="contactSend" onclick="javascript:var $scope=angular.element(document.body).scope(); $scope.$apply(function(){ $scope.contact_us();});"><i class="fa fa-paper-plane"></i>&nbsp;Send</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	tmptr.appendChild(tmptd);	
+	//Subject Row
 	var tmptr2 = document.createElement('tr');
 	tmptr2.id = 'rowContactSubject';
 	this.pbody.appendChild(tmptr2);
+	//Subject Label
 	tmptd = document.createElement('td');
 	tmptd.style.height = '24px';
 	tmptd.align = 'right';
 	tmptd.setAttribute('align', 'right');
-	tmptd.innerHTML = 'Subject:';
+	tmptd.style.verticalAlign = 'top';
+	tmptd.verticalAlign = 'top';
+	tmptd.setAttribute('verticalAlign', 'top');	
+	tmptd.innerHTML = 'Subject:&nbsp;&nbsp;&nbsp;';
 	tmptr2.appendChild(tmptd);
+	//Subject Input
 	tmptd = document.createElement('td');
 	tmptd.style.height = '24px';
 	tmptd.align = 'left';
 	tmptd.setAttribute('align', 'left');
-	tmptd.innerHTML = '<input type="text" id="contactSubject" name="contactSubject" style="border:1px solid #cccccc;">';
+	tmptd.style.verticalAlign = 'top';
+	tmptd.verticalAlign = 'top';
+	tmptd.setAttribute('verticalAlign', 'top');	
+	tmptd.innerHTML = '<input type="text" id="contactSubject" name="contactSubject" style="width:90%; border:1px solid #00000f;border-radius:0px;">';
 	tmptr2.appendChild(tmptd);
+	//Subject Row Empty 3rd Cell
+	tmptd = document.createElement('td');
+	tmptd.setAttribute('width', '10%');
+	tmptd.width = '10%';
+	tmptd.style.height = '24px';
+	tmptd.align = 'right';
+	tmptd.setAttribute('align', 'right');
+	tmptd.innerHTML = '&nbsp;';
+	tmptr.appendChild(tmptd);
 	//Message
 	var tmptr3 = document.createElement('tr');
 	this.pbody.appendChild(tmptr3);
 	tmptd = document.createElement('td');
-	tmptd.setAttribute('colspan', '2');
-	tmptd.colspan = '2';
+	tmptd.setAttribute('colspan', '3');
+	tmptd.colspan = '3';
 	tmptd.setAttribute('align', 'center');
 	tmptd.align = 'center';
 	tmptd.style.margin = '0px';
