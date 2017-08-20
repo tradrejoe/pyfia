@@ -182,3 +182,17 @@ cursor:pointer;font-weight:700;border:1px solid #00000f;background-color:#cccccc
 	text-align:  center;
 	padding:  0px;	
 }
+
+#bgvidwrapper {
+	width: 960px; margin: 0 auto; padding: 0px 0 0px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}

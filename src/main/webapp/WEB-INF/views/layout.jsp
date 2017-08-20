@@ -24,9 +24,10 @@
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-directives.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-ngroute.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/ngResource/resource.js' />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.comp.1.0.26.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.30.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.comp.1.0.27.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.30b.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.angular.1.0.23.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/jquery.tubular.1.0.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.fixedheadertable.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/json.min.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.cookie.js" />"></script>
@@ -68,16 +69,16 @@
 <link rel="stylesheet" href="<c:url value="/resources/scripts/amcharts/style.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/roundabout.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/themes/smoothness/jquery-ui.css"/>" />
-<link rel="stylesheet" href="<c:url value="/resources/css/pyfia.1.0.2.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/pyfia.1.0.3.css"/>" />
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome-4.2.0/css/font-awesome.min.css"/>" />
 <script>
 	pyfia.fullui = ${fullui};
 </script>
 </head>
-<body style="margin:0px;padding:0px;" ng-app="pfNgApp" ng-controller="pfCtrl">
-
+<body style="margin:0px;padding:0px;background-color:#00000f" ng-app="pfNgApp" ng-controller="pfCtrl">
+<div id="bgvidwrapper" class="clearfix">
 <c:if test="${device eq 'normal'}">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="height:50px !important">
+    <div class="navbar navbar-inverse navbar-fixed-top transparent" style="height:50px !important">
       <div class="navbar-inner" style="height:50px !important">
         <div class="container" style="margin-right:0px !important;">
           <div class="nav-collapse collapse pull-right">
@@ -137,11 +138,6 @@
 <c:if test="${device ne 'normal'}">
 		<nav id="mainmenu" class="navbar navbar-default navbar-fixed-top pf_menu_container" role="navigation" style="margin:0px;width:100%;height:50px !important;">
 			<div class="container-fluid" style="height:50px !important">
-					<!-- ul class="nav navbar-nav pull-left" style="vertical-align:bottom;float:left;">
-						<li class=title style="font-size:medium;white-space:nowrap">
-						<img width="50" height="50" zIndex="999" style="z-index:999;width:50px;height:50px;!important;" src='<c:url value="/resources/images/pythialogo.jpg"/>'/>
-						</li>
-					</ul-->
 					<ul class="nav navbar-nav pull-right" style="float:right;">
 						<li style="vertical-align:bottom;" class="dropdown">
 			                <a class="dropdown-toggle" data-toggle="dropdown" style="white-space:nowrap; color:#ffffff !important;font-weight: bold; font-size: 18pt;border: none;background: transparent;"><i class="fa fa-list-ul"></i><b class="caret"></b></a>
@@ -195,18 +191,23 @@
 				</div>	
  	    </nav>
 </c:if>
+
+<tiles:insertAttribute name="body"/>
+	
+<div style="clear:both;" id="fb-root"></div>
+</div>
+<button id="centerbtn" onclick="javascript: pyfia.click_centerbtn();" style="margin:0 auto;width:240px;height:70px;position:absolute;background:transparent;border-radius:8px;border-width:2px;border-style: solid;border-color:#ffffff;cursor:pointer;z-index:3;">
+	<i style="color:#ffffff  !important;" class="fa fa-magic"></i>&nbsp;<span style="color:#ffffff !important;font-weight:700 !important;font-size: 16pt;font-color:#ffffff !important;">Financial Forecast</span>
+</button>
+<div id="pfmsg" style="position:absolute;top:0px;left:0px;" class="pfmsg transparent">&nbsp;</div>
 <c:if test="${fullui==true }">
 <img width="50" height="50" zIndex="2000" style="position:absolute;left:0px;top:0px;z-index:2000;width:50px;height:50px;" src='<c:url value="/resources/images/pythialogo.jpg"/>'/>
 </c:if>
-
-<div id="pfmsg" style="position:absolute;top:0px;left:0px;" class="pfmsg transparent">&nbsp;</div>
-	<tiles:insertAttribute name="body"/>
-	
-<div style="clear:both;" id="fb-root"></div>
 <script>
 var context = '<%=(request.getSession(true).getServletContext().getContextPath().equals("/") ? "" : request.getSession(true).getServletContext().getContextPath())%>';
 angular.element(document).ready(function() {
-	pyfia.init_bootstrap();
+	$('#bgvidwrapper').tubular(pyfia.bgVid.getVid());
+	pyfia.init();
 	(function(d,s,id) {
 		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
 		if(!d.getElementById(id)) {

@@ -345,14 +345,14 @@ pf.comp.ribbon = function(cfg) {
 		if (prop.icon && prop.icon.src || prop.message) {
 			var tmpwidth = pf.comp.isNotNormal() && cfg && typeof cfg.mheight === 'function' ? cfg.mheight.call(this) : $(window).width()/2;
 			var tmpwidth2 = $(window).width() - tmpwidth;
-			var ribbonContent = '<table id="adctn" align="center" border="0" cellspacing="0" cellpadding="0" width="100%" height="'+tmpheight+'" style="width:100%;height:'+tmpheight+'px;"><tr>';
+			var ribbonContent = '<table class="transparent" id="adctn" align="center" border="0" cellspacing="0" cellpadding="0" width="100%" height="'+tmpheight+'" style="width:100%;height:'+tmpheight+'px;"><tr>';
 			if (prop.icon && prop.icon.src) {
-				ribbonContent += '<td align="left" valign="middle" align="center" style="text-align:center;cursor:pointer">'+
-					'<img id="imgad" width="'+ (/mobile/.test(pf.comp.getDevice()) ? Math.round(tmpwidth/2) : tmpwidth)+
+				ribbonContent += '<td class="transparent"  align="left" valign="middle" align="center" style="text-align:center;cursor:pointer">'+
+					'<img class="transparent" id="imgad" width="'+ (/mobile/.test(pf.comp.getDevice()) ? Math.round(tmpwidth/2) : tmpwidth)+
 					'" height="'+(/mobile/.test(pf.comp.getDevice()) ? Math.round(tmpheight/2) : tmpheight)+'" valign="middle" align="left" style="width:'+tmpwidth+'px;height:'+tmpheight+'px;" src="'+prop.icon.src+'"></td>';
 			}
 			if (prop.message) {
-				ribbonContent += '<td width="'+tmpwidth2+'" height="'+tmpheight+'" valign="top" align="center" style="text-align:center;cursor:pointer;">'+
+				ribbonContent += '<td class="transparent" width="'+tmpwidth2+'" height="'+tmpheight+'" valign="top" align="center" style="text-align:center;cursor:pointer;">'+
 					'<div id="divadmsg" style="overflow:hidden;width:'+tmpwidth2+'px;height:'+tmpheight+'px;">'+prop.message+'</div></td>';
 			}
 			ribbonContent += '</tr></table>';			
@@ -383,6 +383,7 @@ pf.comp.ribbon = function(cfg) {
 		$('#adctn').height(tmpheight);
 		$('#imgad').height(tmpheight);
 		$('#divadmsg').height(tmpheight);
+		this.div.className += " transparent";
 		// setInterval(this.init, cfg.pause);
 
 		return this;
