@@ -17,11 +17,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.lc.misc.DateUtils;
@@ -104,36 +108,38 @@ public class YPriceDownloader extends AbstractPriceDownloader {
 //		//HttpClient httpClient = new HttpClient();
 //		logger.debug("url:"+url);
 		
-    	String symbol = "FB";
+    	String symbol = null;
     	String CRUMB_LABEL = "\"CrumbStore\":{\"crumb\":\"";
         String responseBody = null;
         byte[] responseByteArray = null;
         CloseableHttpClient httpclient = HttpClients.createDefault();
+        Cookie cookieB = null;
         
         try {
-
+        	symbol = URLEncoder.encode(cls, "UTF-8");
         	String url = String.format(TemplateYahooFinanceQuoteHistory, symbol);
             HttpGet httpget = new HttpGet(url);
 
             logger.debug("Executing request " + httpget.getRequestLine());
-            //Cookie CookieB = null;
             String crumb = null;
             CloseableHttpResponse response = null;
             HttpClientContext context = null;
+            CookieStore cookieStore = null;
             
             //Get Yahoo Finance B cookie
             try {
                 context = HttpClientContext.create();
                 response = httpclient.execute(httpget, context);
-//                CookieStore cookieStore = context.getCookieStore();
-//                List<Cookie> cookies = cookieStore.getCookies();
-//                for (Cookie c : cookies) {
-//                	logger.debug(String.format("cookie %1$s=%2$s", c.getName(), c.getValue()));
-//                	if (c.getName()!=null && c.getName().equals("B")) {
-//                		CookieB = c;
-//                		break;
-//                	}
-//                }
+                //Save B cookie in case it gets GC'd intermittently.
+                cookieStore = context.getCookieStore();
+                List<Cookie> cookies = cookieStore.getCookies();
+                for (Cookie c : cookies) {
+                	logger.debug(String.format("cookie %1$s=%2$s", c.getName(), c.getValue()));
+                	if (c.getName()!=null && c.getName().equals("B")) {
+                		cookieB = new BasicClientCookie(c.getName(), c.getValue());
+                		break;
+                	}
+                }
                 HttpEntity entity = response.getEntity();
                 responseBody = EntityUtils.toString(entity);
                 logger.debug("----------------------------------------");
@@ -160,6 +166,24 @@ public class YPriceDownloader extends AbstractPriceDownloader {
             url = String.format(TemplateYahooFinancePriceHistory, symbol, Math.round(d0.getTime().getTime()/1000), Math.round(d1.getTime().getTime()/1000), URLEncoder.encode(crumb));
             httpget = new HttpGet(url);
             try {
+                if (cookieB!=null) {
+                	cookieStore = context.getCookieStore();
+                	if (cookieStore==null) {
+                		cookieStore = new BasicCookieStore();
+                		context.setCookieStore(cookieStore);
+                	}
+                	List<Cookie> tmpcl = cookieStore.getCookies();
+                	boolean bFound = false;
+                	for  (Cookie tmpc : tmpcl) {
+                		if (tmpc.getName().equals("B")) {
+                			bFound = true;
+                			break;
+                		}
+                	}
+                	if (!bFound) {
+                		cookieStore.addCookie(cookieB);
+                	}
+                }
                 response = httpclient.execute(httpget, context);
                 HttpEntity entity = response.getEntity();
                 responseByteArray = EntityUtils.toByteArray(entity);
@@ -172,6 +196,10 @@ public class YPriceDownloader extends AbstractPriceDownloader {
             		if (response!=null) response.close();
             	} catch(Exception e) {}
             }
+        } catch(Exception e) {
+        	logger.error(String.format("YPriceDownloader::getFinCaseList(), cannot get yahoo finance price history for symbol %1$s for dates %2$s to %3$s.", 
+        			symbol, SDF.format(d0.getTime()), SDF.format(d1.getTime())));
+        	logger.error(ExceptionUtil.getStack(e));  
         } finally {
         	try {
         		if (httpclient!=null) httpclient.close();

@@ -674,7 +674,7 @@
 					<jpa.database>MYSQL</jpa.database>
 		            <downloadSources>false</downloadSources>
 		            <downloadJavadocs>false</downloadJavadocs>
-		            <log.level>INFO</log.level>
+		            <log.level>DEBUG</log.level>
 					<web.xml.env>dev</web.xml.env>
 	            </properties>
 	        </profile>

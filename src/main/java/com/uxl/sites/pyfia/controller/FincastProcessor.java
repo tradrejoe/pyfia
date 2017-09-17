@@ -367,7 +367,7 @@ public class FincastProcessor implements IForecastProcessor {
 					int histdays = history[h] * 252;
 					FinCaseList tmpfrl = null;
 					try {
-						tmpfrl = cacheFinCls.getFutureReturns(cls, rng, dt, histdays);
+						tmpfrl = cacheFinCls.getFutureReturns(cls, rng, dt, histdays, true);
 					} catch(Exception e) {
 						e.printStackTrace();
 					}
@@ -389,7 +389,7 @@ public class FincastProcessor implements IForecastProcessor {
 						}
 						List<FinCaseList> tmpfcl = null;
 						try {
-							tmpfcl = cacheFinCls.getPassReturns(index, rng, dt, histdays, false);
+							tmpfcl = cacheFinCls.getPassReturns(index, rng, dt, histdays, false, true);
 						} catch(Exception e2) {
 							e2.printStackTrace();
 						}

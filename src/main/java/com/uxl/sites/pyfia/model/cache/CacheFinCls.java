@@ -17,6 +17,7 @@ import org.lc.misc.CollectionUtil;
 import org.lc.misc.DateUtils;
 import org.lc.misc.JsonUtil;
 import org.lc.misc.StringUtil;
+import org.lc.model.CKey;
 import org.lc.web.controller.BaseController;
 
 import weka.core.Attribute;
@@ -143,69 +144,88 @@ public class CacheFinCls extends TreeMap<String, List<FinCaseList>> {
 		return list;
 	}
 	
-	public List<FinCaseList> getPassReturns(String cls, int lag, Date start, int history, boolean sd) throws Exception {
+	public List<FinCaseList> getPassReturns(String cls, int lag, Date start, int history, Boolean... flags) throws Exception {
 		if (lag<0)
 			throw new NegativeLagException();
-		List<FinCaseList> out = new ArrayList<FinCaseList>();
+		boolean sd = (flags.length>0 && flags[0]);
+		boolean useCache = flags.length>1 && flags[1];
+		CKey key = new CKey(cls, lag, start, history, sd);
+		List<FinCaseList> out = null;
 		List<FinCaseList> list = null;
-		try {
-			list = this.fetch(cls);
-		} catch(Exception e) {
-			e.printStackTrace();
-			return out;
+		if (useCache) {
+			list = CacheReturnsFactory.getPastReturns(key);
 		}
-		
-		for (FinCaseList lst : list) {
-			if (!sd && FinCaseSDList.class.isInstance(lst)) continue;
-			FinCaseList tmp = (FinCaseSDList.class.isInstance(lst)) ? new FinCaseSDList() : new FinCaseList();
-			out.add(tmp);
-			Set<Date> keys = lst.keySet();
-			Date[] dates = (Date[])keys.toArray(new Date[0]);
-			for (int i=dates.length-1; i>=0; i--) {
-				Date dt = dates[i];
-				if (start!=null && dt.after(start))
-					continue;
-				Double cval = lst.get(dt);
-				if (i-lag >=0 && cval != null) {
-					Date pdt = dates[i-lag];
-					Double pval = lst.get(pdt);
-					if (pval != null && !pval.equals(0)) {
-						Double ret = (cval.doubleValue() / pval.doubleValue()) - 1.0;
-						tmp.put(dt, ret);
+		if (list!=null && list.size()>0 && list.get(0).size()>0) {
+			out = list;
+		} else {
+			list = this.fetch(cls);
+			out = new ArrayList<>();
+			for (FinCaseList lst : list) {
+				if (!sd && FinCaseSDList.class.isInstance(lst)) continue;
+				FinCaseList tmp = (FinCaseSDList.class.isInstance(lst)) ? new FinCaseSDList() : new FinCaseList();
+				out.add(tmp);
+				Set<Date> keys = lst.keySet();
+				Date[] dates = (Date[])keys.toArray(new Date[0]);
+				for (int i=dates.length-1; i>=0; i--) {
+					Date dt = dates[i];
+					if (start!=null && dt.after(start))
+						continue;
+					Double cval = lst.get(dt);
+					if (i-lag >=0 && cval != null) {
+						Date pdt = dates[i-lag];
+						Double pval = lst.get(pdt);
+						if (pval != null && !pval.equals(0)) {
+							Double ret = (cval.doubleValue() / pval.doubleValue()) - 1.0;
+							tmp.put(dt, ret);
+						}
 					}
+					if (tmp.size()>history) break;
 				}
-				if (tmp.size()>history) break;
 			}
+			CacheReturnsFactory.setPastReturns(key, out);
 		}
 		return out;
 	}
 	
-	public FinCaseList getFutureReturns(String cls, int lag, Date start, int history) throws Exception {
+	public FinCaseList getFutureReturns(String cls, int lag, Date start, int history, Boolean... flags) throws Exception {
 		if (lag<0)
 			throw new NegativeLagException();
-		List<FinCaseList> list = this.fetch(cls);
-		//logger.debug("start=" + start + "; list=" + list);
-		FinCaseList out = new FinCaseList();
-		for (FinCaseList lst : list) {
-			if (FinCaseSDList.class.isInstance(lst)) continue;
-			Set<Date> keys = lst.keySet();
-			Date[] dates = (Date[])keys.toArray(new Date[0]);
-			for (int i=dates.length-1; i>=0; i--) {
-				Date dt = dates[i];
-				if (start!=null && dt.after(start))
-					continue;
-				Double cval = lst.get(dt);
-				if (i+lag <dates.length && cval != null) {
-					Date fdt = dates[i+lag];
-					Double fval = lst.get(fdt);
-					if (fval != null && !cval.equals(0)) {
-						Double ret = (fval.doubleValue() / cval.doubleValue()) - 1.0;
-						//out.put(dt, ret > 0 ? 1.0 : 0.0);
-						out.put(dt, ret);
+		FinCaseList out = null;
+		CKey key = new CKey(cls, lag, start, history);
+		List<FinCaseList> list = null;
+		if (flags.length>0 && flags[0]) {
+			list = CacheReturnsFactory.getFutureReturns(key);
+		}
+		if (list!=null && list.size()>0 && list.get(0).size()>0) {
+			out = list.get(0);		
+		} else {
+			out = new FinCaseList();
+			list = this.fetch(cls);
+			//logger.debug("start=" + start + "; list=" + list);
+			for (FinCaseList lst : list) {
+				if (FinCaseSDList.class.isInstance(lst)) continue;
+				Set<Date> keys = lst.keySet();
+				Date[] dates = (Date[])keys.toArray(new Date[0]);
+				for (int i=dates.length-1; i>=0; i--) {
+					Date dt = dates[i];
+					if (start!=null && dt.after(start))
+						continue;
+					Double cval = lst.get(dt);
+					if (i+lag <dates.length && cval != null) {
+						Date fdt = dates[i+lag];
+						Double fval = lst.get(fdt);
+						if (fval != null && !cval.equals(0)) {
+							Double ret = (fval.doubleValue() / cval.doubleValue()) - 1.0;
+							//out.put(dt, ret > 0 ? 1.0 : 0.0);
+							out.put(dt, ret);
+						}
 					}
+					if (out.size() > history) break;
 				}
-				if (out.size() > history) break;
 			}
+			List<FinCaseList> tmpl = new ArrayList<>();
+			tmpl.add(out);
+			CacheReturnsFactory.setFutureReturns(key, tmpl);
 		}
 		return out;
 	}

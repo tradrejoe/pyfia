@@ -2,6 +2,7 @@ package com.uxl.sites.pyfia;
 
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -18,8 +19,10 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.util.EntityUtils;
 
 /**
@@ -29,13 +32,15 @@ import org.apache.http.util.EntityUtils;
 public class YahooFinance201708Test {
 
     public final static void main(String[] args) throws Exception {
-    	String symbol = "FB";
+    	String symbol = URLEncoder.encode("^GSPC", "UTF-8");
     	SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
     	Date d0 = sdf.parse("01/01/2015");
     	Date d1 = GregorianCalendar.getInstance().getTime();
     	String CRUMB_LABEL = "\"CrumbStore\":{\"crumb\":\"";
     	
         CloseableHttpClient httpclient = HttpClients.createDefault();
+        Cookie cookieB = null;
+        CookieStore cookieStore = null;
         try {
         	String templateYahooFinanceQuoteHistory = "https://finance.yahoo.com/quote/%1$s/history";
         	String templateYahooFinancePriceHistory = "https://query1.finance.yahoo.com/v7/finance/download/%1$s?period1=%2$d&period2=%3$d&interval=1d&events=history&crumb=%4$s";
@@ -43,18 +48,17 @@ public class YahooFinance201708Test {
             HttpGet httpget = new HttpGet(url);
 
             System.out.println("Executing request " + httpget.getRequestLine());
-            Cookie CookieB = null;
             String crumb = null;
 
             HttpClientContext context = HttpClientContext.create();
             CloseableHttpResponse response = httpclient.execute(httpget, context);
             try {
-                CookieStore cookieStore = context.getCookieStore();
+                cookieStore = context.getCookieStore();
                 List<Cookie> cookies = cookieStore.getCookies();
                 for (Cookie c : cookies) {
                 	System.out.println(String.format("cookie %1$s=%2$s", c.getName(), c.getValue()));
                 	if (c.getName()!=null && c.getName().equals("B")) {
-                		CookieB = c;
+                		cookieB = new BasicClientCookie(c.getName(), c.getValue());
                 		break;
                 	}
                 }
@@ -77,9 +81,27 @@ public class YahooFinance201708Test {
             }
             
             url = String.format(templateYahooFinancePriceHistory, symbol, Math.round(d0.getTime()/1000), Math.round(d1.getTime()/1000), crumb);
-            httpget = new HttpGet(url);
-            response = httpclient.execute(httpget, context);
+            httpget = new HttpGet(url);         
             try {
+                if (cookieB!=null) {
+                	cookieStore = context.getCookieStore();
+                	if (cookieStore==null) {
+                		cookieStore = new BasicCookieStore();
+                		context.setCookieStore(cookieStore);
+                	}
+                	List<Cookie> tmpcl = cookieStore.getCookies();
+                	boolean bFound = false;
+                	for  (Cookie tmpc : tmpcl) {
+                		if (tmpc.getName().equals("B")) {
+                			bFound = true;
+                			break;
+                		}
+                	}
+                	if (!bFound) {
+                		cookieStore.addCookie(cookieB);
+                	}
+                }            	
+                response = httpclient.execute(httpget, context);
                 HttpEntity entity = response.getEntity();
                 String responseBody = EntityUtils.toString(entity);
                 System.out.println("-------------------PRICE HISTORY ---------------------");
