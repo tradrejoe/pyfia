@@ -891,7 +891,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.searchlbl.style.fontWeight = '900';
 	this.searchlbl.style.marginTop = '5px';
 	this.searchlbl.style.fontSize = '16px';
-	this.searchlbl.style.display = 'table-cell';
+	if (!pf.comp.isNotNormal()) this.searchlbl.style.display = 'table-cell';
 	this.searchlbl.style.textAlign = 'right';
 	this.searchlbl.style.verticalAlign = 'middle';
 	this.searchlbl.setAttribute("align", "right");
@@ -899,7 +899,7 @@ pf.comp.panel.forecast = function(cfg) {
 	//this.searchlbl.style.width = '20%';
 	this.searchlbl.style.width = '20px';
 	this.searchlbl.style.whiteSpace = "nowrap";
-	this.searchlbl.style.display = 'table-cell';
+	if (!pf.comp.isNotNormal()) this.searchlbl.style.display = 'table-cell';
 	this.searchlbl.innerHTML = 'Stock Symbol&nbsp;&nbsp;&nbsp;';
 	li.appendChild(this.searchlbl);
 
@@ -911,9 +911,11 @@ pf.comp.panel.forecast = function(cfg) {
 	this.search.style.borderColor = '#00000f';
 	this.search.style.cssFloat = 'left';
 	this.search.style.fontSize = '16px';
-	if (!pf.comp.isNotNormal()) { this.search.style.width = '100%'; }
 	this.search.style.whiteSpace = "nowrap";
-	this.search.style.display = 'table-cell';	
+	if (!pf.comp.isNotNormal()) {
+		this.search.style.width = '100%';
+		this.search.style.display = 'table-cell';
+	}
 	this.searchctn.style.textAlign = 'left';
 	this.searchctn.appendChild(this.search);
 	li.appendChild(this.searchctn);
@@ -929,7 +931,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.callbl.setAttribute("align", "right");
 	this.callbl.setAttribute("valign", "middle");
 	this.callbl.style.whiteSpace = "nowrap";
-	this.callbl.style.display = 'table-cell';
+	if (!pf.comp.isNotNormal()) this.callbl.style.display = 'table-cell';
 	this.callbl.innerHTML = 'Target Date&nbsp;&nbsp;&nbsp;';
 	li.appendChild(this.callbl);
 
@@ -940,7 +942,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.cal.style.borderWidth = '1px';
 	this.cal.style.borderColor = '#00000f';
 	this.cal.style.fontSize = '16px';
-	this.cal.style.display = 'table-cell';
+	if (!pf.comp.isNotNormal()) this.cal.style.display = 'table-cell';
 	this.cal.style.width = '100%';
 	this.cal.id = 'targetDate';
 	this.calctn.appendChild(this.cal);
@@ -961,7 +963,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.histlbl.setAttribute("align", "right");
 	this.histlbl.setAttribute("valign", "middle");
 	this.histlbl.style.whiteSpace = "nowrap";
-	this.histlbl.style.display = 'table-cell';
+	if (!pf.comp.isNotNormal()) this.histlbl.style.display = 'table-cell';
 	li.appendChild(this.histlbl);
 
 	this.histctn = document.createElement('td');
@@ -974,7 +976,7 @@ pf.comp.panel.forecast = function(cfg) {
 	this.hist.style.width = '100%';
 	this.hist.id = 'history';
 	this.hist.style.whiteSpace = "nowrap";
-	this.hist.style.display = 'table-cell';	
+	if (!pf.comp.isNotNormal()) this.hist.style.display = 'table-cell';	
 	this.histctn.appendChild(this.hist);
 	li.appendChild(this.histctn);
 
