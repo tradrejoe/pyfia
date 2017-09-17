@@ -116,7 +116,7 @@ public class ClsDS implements IClsDS {
 					e.printStackTrace();
 					try {
 						jdbcTemplate.execute(
-							"create table " + tabnameo + " if not exists (cse date not null, val double not null, UNIQUE(cse, val))");
+							"create table " + tabnameo + " (cse date not null, val double not null, UNIQUE(cse, val))");
 					} catch(Exception e2) {
 						e.printStackTrace();
 						logger.error("error", e2);

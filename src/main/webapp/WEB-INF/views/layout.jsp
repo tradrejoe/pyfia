@@ -24,7 +24,7 @@
 <script type="text/javascript" src="<c:url value='/resources/scripts/angularjs-ngroute.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/scripts/ngResource/resource.js' />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.comp.1.0.27.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.31.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.1.0.32.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/pyfia.angular.1.0.23.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.tubular.1.0.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/jquery.fixedheadertable.js" />"></script>
@@ -65,7 +65,6 @@
 <c:if test="${device ne 'normal'}">
 	<script src='<c:url value="/resources/bootstrap-3.1.1/dist/js/bootstrap.min.js"/>'></script>
 </c:if>
-<link rel="stylesheet" href="<c:url value="/resources/scripts/amcharts/style.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/roundabout.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/themes/smoothness/jquery-ui.css"/>" />
 <link rel="stylesheet" href="<c:url value="/resources/css/pyfia.1.0.3.css"/>" />
@@ -195,7 +194,7 @@
 	
 <div style="clear:both;" id="fb-root"></div>
 </div>
-<button id="centerbtn" onclick="javascript: pyfia.click_centerbtn();" style="margin:0 auto;width:240px;height:70px;position:absolute;background:transparent;border-radius:8px;border-width:2px;border-style: solid;border-color:#ffffff;cursor:pointer;z-index:3;">
+<button id="centerbtn" onclick="javascript: pyfia.click_centerbtn();" style="margin:0 auto;width:240px;height:70px;position:absolute;background:transparent;border-radius:8px;border-width:2px;border-style: solid;border-color:#ffffff;cursor:pointer;z-index:3;display:none;">
 	<i style="color:#ffffff  !important;" class="fa fa-magic"></i>&nbsp;<span style="color:#ffffff !important;font-weight:700 !important;font-size: 16pt;font-color:#ffffff !important;">Financial Forecast</span>
 </button>
 <div id="pfmsg" style="position:absolute;top:0px;left:0px;" class="pfmsg transparent">&nbsp;</div>
@@ -250,17 +249,17 @@ $(window).on('beforeunload', function() {
     pyfia.logout();    
 });	
 </script>
-<!-- script type="text/javascript" src="<c:url value="/resources/scripts/fusioncharts/js/fusioncharts.js" />"></script -->
-<!-- script type="text/javascript" src="<c:url value="/resources/scripts/fusioncharts/js/fusioncharts.powercharts.min.js" />"></script -->
-<!-- script type="text/javascript" src="<c:url value="/resources/scripts/fusioncharts/js/themes/fusioncharts.theme.fint.js" />"></script -->
-<!-- script type="text/javascript" src="<c:url value="/resources/scripts/mxgraph/src/js/mxClient.js" /> "></script-->
-
 <script type="text/javascript" src="<c:url value="/resources/scripts/d3.v3.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amcharts.lib3.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amcharts.serial.js" /> "></script>
-<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amcharts.themes.light.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/tiny_mce/tiny_mce.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/scrollbar.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/scripts/roundabout.js" />"></script>
+
+<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amcharts.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/serial.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/amstock.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/plugins/export/export.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/scripts/amcharts/themes/light.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/scripts/amcharts/plugins/export/export.css" />" type="text/css" media="all" />
+
 </body>
 </html>
