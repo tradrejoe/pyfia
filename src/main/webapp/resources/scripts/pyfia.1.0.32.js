@@ -226,8 +226,10 @@
 			if (pyfia.fullui) {
 				pf.comp.noresize = true;
 				this.ribbon = (new pf.comp.ribbon($.extend({}, pyfia.config.ribbon, {mheight: pyfia.getBottom}))).init();
-				setInterval(this.ribbon.init, pyfia.config.ribbon.pause);				
-				//this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
+				setInterval(this.ribbon.init, pyfia.config.ribbon.pause);
+				if (pf.comp.isNotNormal()) {
+					this.bgcarousel = new pf.comp.bgCarouselWrapper(pyfia.config.bgcarousel);
+				}
 				$(document.body).append(this.fcbtn);
 				pf.comp.cbtn = document.getElementById('centerbtn');
 				pf.center($('#centerbtn'));

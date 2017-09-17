@@ -74,8 +74,8 @@
 </script>
 </head>
 <body style="margin:0px;padding:0px;background-color:#00000f" ng-app="pfNgApp" ng-controller="pfCtrl">
-<div id="bgvidwrapper" class="clearfix">
 <c:if test="${device eq 'normal'}">
+   <div id="bgvidwrapper" class="clearfix">
     <div class="navbar navbar-inverse navbar-fixed-top transparent" style="height:50px !important">
       <div class="navbar-inner" style="height:50px !important">
         <div class="container" style="margin-right:0px !important;">
@@ -132,6 +132,7 @@
         </div>
       </div>
     </div>
+   </div>
 </c:if>
 <c:if test="${device ne 'normal'}">
 		<nav id="mainmenu" class="navbar navbar-default navbar-fixed-top pf_menu_container" role="navigation" style="margin:0px;width:100%;height:50px !important;">
@@ -193,7 +194,6 @@
 <tiles:insertAttribute name="body"/>
 	
 <div style="clear:both;" id="fb-root"></div>
-</div>
 <button id="centerbtn" onclick="javascript: pyfia.click_centerbtn();" style="margin:0 auto;width:240px;height:70px;position:absolute;background:transparent;border-radius:8px;border-width:2px;border-style: solid;border-color:#ffffff;cursor:pointer;z-index:3;display:none;">
 	<i style="color:#ffffff  !important;" class="fa fa-magic"></i>&nbsp;<span style="color:#ffffff !important;font-weight:700 !important;font-size: 16pt;font-color:#ffffff !important;">Financial Forecast</span>
 </button>
@@ -204,7 +204,7 @@
 <script>
 var context = '<%=(request.getSession(true).getServletContext().getContextPath().equals("/") ? "" : request.getSession(true).getServletContext().getContextPath())%>';
 angular.element(document).ready(function() {
-	$('#bgvidwrapper').tubular(pyfia.bgVid.getVid());
+	if (!pf.comp.isNotNormal()) $('#bgvidwrapper').tubular(pyfia.bgVid.getVid());
 	pyfia.init();
 	(function(d,s,id) {
 		var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";
