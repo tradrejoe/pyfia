@@ -912,8 +912,8 @@ pf.comp.panel.forecast = function(cfg) {
 	this.search.style.cssFloat = 'left';
 	this.search.style.fontSize = '16px';
 	this.search.style.whiteSpace = "nowrap";
+	this.search.style.width = '100%';
 	if (!pf.comp.isNotNormal()) {
-		this.search.style.width = '100%';
 		this.search.style.display = 'table-cell';
 	}
 	this.searchctn.style.textAlign = 'left';
@@ -1122,8 +1122,8 @@ pf.comp.panel.forecast = function(cfg) {
 		}
 	} //end createIdxTabs
 	if (pf.comp.isNotNormal()) {
-		li = document.createElement('tr');
-		this.ctnpred = document.createElement('td');
+		li = document.createElement('div');
+		/*this.ctnpred = document.createElement('td');
 		this.ctnpred.colspan = 3;
 		this.ctnpred.setAttribute('colspan', 3);
 		this.ctnpred.align = 'center';
@@ -1131,7 +1131,10 @@ pf.comp.panel.forecast = function(cfg) {
 		this.ctnpred.style.textAlign = 'center';
 		this.ctnpred.innerHTML = getSelectHtml('predLst');
 		li.appendChild(this.ctnpred);
-		this.lst.appendChild(li);
+		this.lst2.appendChild(li);*/
+		li.style.width = "95%";
+		li.innerHTML = getSelectHtml('predLst');
+		this.panel.appendChild(li);
 	} else {
 		createIdxTabs(this.panel);
 	}
