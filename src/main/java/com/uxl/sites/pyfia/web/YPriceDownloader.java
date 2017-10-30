@@ -112,10 +112,11 @@ public class YPriceDownloader extends AbstractPriceDownloader {
     	String CRUMB_LABEL = "\"CrumbStore\":{\"crumb\":\"";
         String responseBody = null;
         byte[] responseByteArray = null;
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpClient httpclient = null;
         Cookie cookieB = null;
         
         try {
+        	httpclient = HttpClients.createDefault();
         	symbol = URLEncoder.encode(cls, "UTF-8");
         	String url = String.format(TemplateYahooFinanceQuoteHistory, symbol);
             HttpGet httpget = new HttpGet(url);
@@ -190,7 +191,7 @@ public class YPriceDownloader extends AbstractPriceDownloader {
             } catch(Exception e) {
             	logger.error(String.format("YPriceDownloader::getFinCaseList(), cannot get yahoo finance price history for symbol %1$s for dates %2$s to %3$s.", 
             			symbol, SDF.format(d0.getTime()), SDF.format(d1.getTime())));
-            	logger.error(ExceptionUtil.getStack(e));            	
+            	logger.error(ExceptionUtil.getStack(e));
             } finally {
             	try {
             		if (response!=null) response.close();
@@ -205,7 +206,7 @@ public class YPriceDownloader extends AbstractPriceDownloader {
         		if (httpclient!=null) httpclient.close();
         	} catch(Exception e) {}
         }		
-		
+		//TODO: INTRO RETRIES
         //Download Yahoo Finance Price History
 		try {
 //			conn = (new URL(url)).openConnection();
