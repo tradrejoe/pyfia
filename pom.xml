@@ -16,8 +16,23 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- AspectJ -->
 		<aspectj.version>1.8.0</aspectj.version>		
-	</properties>
-	  
+			<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+			<jdbc.url>jdbc:mysql://localhost:3306/pyfiadb?autoReconnect=true</jdbc.url>
+            <jdbc.username>root</jdbc.username>
+            <jdbc.password>$n00pL10n</jdbc.password>
+            <jdbc.initLocation>resources/db/mysql/pyfiadb_prod.sql</jdbc.initLocation>
+			<jdbc.dataLocation>resources/db/mysql/pyfiadat_prod.sql</jdbc.dataLocation>
+			<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+			<hibernate.show_sql>false</hibernate.show_sql>
+			<hibernate.generate_statistics>false</hibernate.generate_statistics>
+			<jpa.showSql>false</jpa.showSql>
+			<jpa.databasePlatform>oracle.toplink.essentials.platform.database.MySQL4Platform</jpa.databasePlatform>
+			<jpa.database>MYSQL</jpa.database>
+			<log.level>INFO</log.level>
+	         <downloadSources>false</downloadSources>
+	         <downloadJavadocs>false</downloadJavadocs>
+			<web.xml.env>prod</web.xml.env>
+		</properties>	
   <dependencies>
     <dependency>
     	<groupId>org.springframework</groupId>
@@ -634,50 +649,4 @@
 			</plugin-->
 		</plugins>
 	</build>
-	    <profiles>
-	        <profile>
-	            <id>prod</id>
-	            <properties>
-	                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-					<jdbc.url>jdbc:mysql://localhost:3306/pyfiadb?autoReconnect=true</jdbc.url>
-	                <jdbc.username>root</jdbc.username>
-	                <jdbc.password>$n00pL10n</jdbc.password>
-	                <jdbc.initLocation>resources/db/mysql/pyfiadb_prod.sql</jdbc.initLocation>
-					<jdbc.dataLocation>resources/db/mysql/pyfiadat_prod.sql</jdbc.dataLocation>
-					<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-					<hibernate.show_sql>false</hibernate.show_sql>
-					<hibernate.generate_statistics>false</hibernate.generate_statistics>
-					<jpa.showSql>false</jpa.showSql>
-					<jpa.databasePlatform>oracle.toplink.essentials.platform.database.MySQL4Platform</jpa.databasePlatform>
-					<jpa.database>MYSQL</jpa.database>
-					<log.level>INFO</log.level>
-		            <downloadSources>false</downloadSources>
-		            <downloadJavadocs>false</downloadJavadocs>
-					<web.xml.env>prod</web.xml.env>
-	            </properties>
-	        </profile>
-	        
-	        <profile>
-	            <id>dev</id>
-	            <properties>
-	                <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-	                <jdbc.url>jdbc:mysql://localhost:3306/pyfia?autoReconnect=true</jdbc.url>
-	                <jdbc.username>root</jdbc.username>
-	                <jdbc.password>$n00pL10n</jdbc.password>
-	                <jdbc.initLocation>resources/db/mysql/pyfiadb.sql</jdbc.initLocation>
-					<jdbc.dataLocation>resources/db/mysql/pyfiadat.sql</jdbc.dataLocation>
-					<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-					<hibernate.show_sql>false</hibernate.show_sql>
-					<hibernate.generate_statistics>false</hibernate.generate_statistics>
-					<jpa.showSql>false</jpa.showSql>
-					<jpa.databasePlatform>oracle.toplink.essentials.platform.database.MySQL4Platform</jpa.databasePlatform>
-					<jpa.database>MYSQL</jpa.database>
-		            <downloadSources>false</downloadSources>
-		            <downloadJavadocs>false</downloadJavadocs>
-		            <log.level>DEBUG</log.level>
-					<web.xml.env>dev</web.xml.env>
-	            </properties>
-	        </profile>
-	
-		</profiles>		
 </project>
