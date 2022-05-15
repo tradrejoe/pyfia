@@ -191,10 +191,10 @@
 		noresize: false,
 		bgVid: {
 			list: [{videoId: 'D_XuLVEsS2M', start: 8}, 
-				{videoId: '3uH3D4i-yNs', start: 0},
+				{videoId: '6k7a8bw451M', start: 0},
 				{videoId: 'PoClrqhEfm0', start: 0}, 
 				{videoId: 'ssyFx8tuYJY', start: 0}, 
-				{videoId: 'MHPlR3G3UZI', start: 0}],
+				{videoId: 'gYO1uk7vIcc', start: 0}],
 			getVid: function() { return this.list[Math.round((this.list.length-1)*Math.random())]; }
 		},
 //		init: function() {
