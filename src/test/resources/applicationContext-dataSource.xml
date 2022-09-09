@@ -20,7 +20,7 @@
 	<!-- DataSource configuration for Apache Commons DBCP. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
 			p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-			p:username="${jdbc.username}" p:password="${jdbc.password}"
+			p:username="${jdbc.username}" p:password="${jdbc.pwd}"
 			p:testOnBorrow="true" p:validationQuery="SELECT 1 FROM DUAL" 
 			p:poolPreparedStatements="true" p:maxWait="30000"
 			p:accessToUnderlyingConnectionAllowed="true"
