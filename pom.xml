@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<version>1.1</version>
 	<properties>
-		<spring.version>5.3.9</spring.version>
+		<spring.version>5.3.18</spring.version>
 		<spring-context.version>5.3.9</spring-context.version>
 		<spring-core.version>5.3.9</spring-core.version>
 		<junit.version>4.11</junit.version>
