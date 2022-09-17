@@ -1,0 +1,16 @@
+##!/bin/sh
+
+PROJ_HOME=/c/projects/pyfia
+CATALINA_HOME=/c/apache-tomcat-9.0.21
+
+cd $PROJ_HOME
+mvn clean install -Djavax.net.ssl.trustStorePassword=changeit -Djdbc.url=db-pyfia.cs4dek3qvvfe.us-east-1.rds.amazonaws.com -Djdbc.username=root
+$CATALINA_HOME/bin/catalina.sh stop || \
+rm -rf $CATALINA_HOME/webapps/ROOT || \
+rm -rf $CATALINA_HOME/work/Catalina || \
+cp target/ROOT.war $CATALINA_HOME/webapps || \
+$CATALINA_HOME/bin/catalina.sh start
+
+
+
+
