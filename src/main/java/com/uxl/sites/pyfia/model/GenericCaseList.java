@@ -1,9 +1,7 @@
 package com.uxl.sites.pyfia.model;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 

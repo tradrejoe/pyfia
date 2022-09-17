@@ -20,7 +20,7 @@
 	<!-- context:property-placeholder location="classpath:jdbc.properties"/ -->
 
 	<!-- Hibernate SessionFactory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
 			p:dataSource-ref="dataSource">
 		<property name="hibernateProperties">
 			<props>
@@ -29,13 +29,13 @@
 				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
 			</props>
 		</property>
-		<property name="eventListeners">
+		<!--property name="eventListeners">
 			<map>
 				<entry key="merge">
-					<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+					<bean class="org.hibernate.event.internal.DefaultMergeEventListener"/>
 				</entry>
 			</map>
-		</property>
+		</property-->
 	    <property name="mappingResources">
 	        <list>
 	            <value>com/uxl/sites/pyfia/model/db/ClsFin.hbm.xml</value>
@@ -47,7 +47,7 @@
 	</bean>
 
 	<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"
 			p:sessionFactory-ref="sessionFactory"/>
 
 	<!-- Transaction manager that delegates to JTA (for a transactional JNDI DataSource) -->

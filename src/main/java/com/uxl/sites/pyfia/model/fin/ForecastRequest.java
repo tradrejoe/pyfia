@@ -3,10 +3,10 @@ package com.uxl.sites.pyfia.model.fin;
 import java.util.ArrayList;
 import java.util.Date;
 
-import weka.core.Attribute;
-
 import com.uxl.sites.pyfia.model.fin.exceptions.NegativeLagException;
 import com.uxl.sites.pyfia.model.fin.exceptions.NoPredictorsException;
+
+import weka.core.Attribute;
 
 public class ForecastRequest
   implements IForecastRequest

@@ -3,13 +3,14 @@ package com.uxl.sites.pyfia.hibernate;
 import java.util.Collection;
 
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import com.uxl.sites.pyfia.IDS;
-import com.uxl.sites.pyfia.ClassFinancial;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.uxl.sites.pyfia.ClassFinancial;
+import com.uxl.sites.pyfia.IDS;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.service.internal.SessionFactoryServiceRegistryImpl;
 
 /**
  * Hibernate implementation of the IDS interface.

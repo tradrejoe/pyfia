@@ -1,7 +1,12 @@
 package com.uxl.sites.pyfia.model.spm;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 import com.uxl.sites.pyfia.model.fin.FincastRequest;
 

@@ -1,18 +1,13 @@
 package com.uxl.sites.pyfia.manager;
 
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.uxl.sites.users.UserTestHarness;
 import com.uxl.sites.users.exceptions.IException;
 import com.uxl.sites.users.exceptions.UserException;
-import com.uxl.sites.pyfia.model.db.UsersHome;
-import com.uxl.sites.users.IUsers;
-import com.uxl.sites.users.UserTestHarness;
 
 @Service
 @Repository

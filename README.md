@@ -1,0 +1,1 @@
+mvn clean install -Djavax.net.ssl.trustStorePassword=changeit -Djdbc.url=db-pyfia.cs4dek3qvvfe.us-east-1.rds.amazonaws.com -Djdbc.username=root

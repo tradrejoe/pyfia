@@ -1,8 +1,17 @@
 package com.uxl.sites.pyfia.model.fc;
 
-import com.uxl.sites.pyfia.model.fc.lib.*;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import com.uxl.sites.pyfia.model.fc.lib.fcs;
+import com.uxl.sites.pyfia.model.fc.lib.fcsmod;
+import com.uxl.sites.pyfia.model.fc.lib.fcsnd;
+import com.uxl.sites.pyfia.model.fc.lib.fcsparm;
+import com.uxl.sites.pyfia.model.fc.lib.fcsprblm;
+import com.uxl.sites.pyfia.model.fc.lib.fcsprnif;
 
 class fcstrn {
 	private fcsparm param;		// set by parse_command_line

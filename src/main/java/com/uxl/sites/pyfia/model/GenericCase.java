@@ -1,7 +1,5 @@
 package com.uxl.sites.pyfia.model;
 
-import java.util.Date;
-
 public class GenericCase<C, V> {
 	public C getCse() {
 		return cse;

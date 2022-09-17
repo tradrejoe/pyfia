@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
-import weka.core.converters.ConverterUtils.DataSource;
-
 import com.uxl.sites.pyfia.model.fin.exceptions.NoPredictorsException;
+
+import weka.core.converters.ConverterUtils.DataSource;
 
 public class FincastRequest
   extends ForecastRequest

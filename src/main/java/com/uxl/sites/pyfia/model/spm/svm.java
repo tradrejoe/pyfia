@@ -1,7 +1,14 @@
 package com.uxl.sites.pyfia.model.spm;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Random;
+import java.util.StringTokenizer;
 
 import com.uxl.sites.pyfia.model.fin.FincastRequest;
 import com.uxl.sites.pyfia.model.fin.FincastResponse;

@@ -1,11 +1,38 @@
 package com.uxl.sites.pyfia.model.fc;
 
-import com.uxl.sites.pyfia.model.fc.lib.*;
-import java.applet.*;
-import java.awt.*;
-import java.util.*;
-import java.awt.event.*;
-import java.io.*;
+import java.applet.Applet;
+import java.awt.AWTEvent;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import com.uxl.sites.pyfia.model.fc.lib.fcs;
+import com.uxl.sites.pyfia.model.fc.lib.fcsmod;
+import com.uxl.sites.pyfia.model.fc.lib.fcsnd;
+import com.uxl.sites.pyfia.model.fc.lib.fcsparm;
+import com.uxl.sites.pyfia.model.fc.lib.fcsprblm;
 
 public class fcsty extends Applet {
 

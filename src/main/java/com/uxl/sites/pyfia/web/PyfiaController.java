@@ -1,18 +1,15 @@
 package com.uxl.sites.pyfia.web;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.TreeMap;
-import java.util.UUID;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLDecoder;
-import java.security.Principal;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +18,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Logger;
 import org.lc.comm.mail.EmailSender;
 import org.lc.frameworks.spring.SpringUtils;
 import org.lc.graphics.mxgraph.RelationalDiagram;
@@ -34,25 +30,8 @@ import org.lc.web.annotations.RestfulRequestHandler;
 import org.lc.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-
-import com.uxl.sites.pyfia.controller.FincastProcessor;
-import com.uxl.sites.users.IUsersGeneric;
-import com.uxl.sites.users.exceptions.UserException;
-import com.uxl.sites.pyfia.model.EmailResponse;
-import com.uxl.sites.pyfia.model.FincastResponseDTO;
-import com.uxl.sites.pyfia.model.GAdParams;
-import com.uxl.sites.pyfia.model.GenericResponse;
-import com.uxl.sites.pyfia.model.adapter.UsersAdapter;
-import com.uxl.sites.pyfia.model.db.Users;
-import com.uxl.sites.pyfia.model.db.UsersHome;
-import com.uxl.sites.pyfia.model.fin.FincastResponse;
-import com.uxl.sites.pyfia.model.fin.ForecastRequest;
-
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
-import org.springframework.mobile.device.site.SitePreference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -61,10 +40,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.support.RequestContextUtils;
+
+import com.uxl.sites.pyfia.controller.FincastProcessor;
+import com.uxl.sites.pyfia.model.EmailResponse;
+import com.uxl.sites.pyfia.model.FincastResponseDTO;
+import com.uxl.sites.pyfia.model.GAdParams;
+import com.uxl.sites.pyfia.model.GenericResponse;
+import com.uxl.sites.pyfia.model.adapter.UsersAdapter;
+import com.uxl.sites.pyfia.model.fin.FincastResponse;
+import com.uxl.sites.pyfia.model.fin.ForecastRequest;
+import com.uxl.sites.users.IUsersGeneric;
+import com.uxl.sites.users.exceptions.UserException;
 
 
 /**

@@ -3,9 +3,7 @@ package com.uxl.sites.pyfia.model.fin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.StringTokenizer;
 
 import org.lc.misc.DateUtils;
 

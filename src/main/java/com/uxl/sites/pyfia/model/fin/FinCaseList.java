@@ -1,14 +1,10 @@
 package com.uxl.sites.pyfia.model.fin;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.TreeSet;
 
-import com.uxl.sites.pyfia.model.GenericCase;
 import com.uxl.sites.pyfia.model.GenericCaseList;
 
 public class FinCaseList extends GenericCaseList<Date, Double> {

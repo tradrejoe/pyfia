@@ -3,7 +3,6 @@ package com.uxl.sites.pyfia.model.fin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Date;
 
 import com.uxl.sites.pyfia.model.GenericCase;
 

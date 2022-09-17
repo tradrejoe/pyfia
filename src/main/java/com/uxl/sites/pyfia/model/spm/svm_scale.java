@@ -1,8 +1,12 @@
 package com.uxl.sites.pyfia.model.spm;
 
-import java.io.*;
-import java.util.*;
-import java.text.DecimalFormat;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Formatter;
+import java.util.StringTokenizer;
 
 class svm_scale
 {

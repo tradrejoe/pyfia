@@ -1,7 +1,6 @@
 package com.uxl.sites.pyfia.web;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import com.uxl.sites.pyfia.model.fin.FinCaseList;

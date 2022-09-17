@@ -1,15 +1,11 @@
 package com.uxl.sites.pyfia.jdbc;
 
-import java.sql.Connection;
-import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import javax.sql.DataSource;
 
 import org.lc.misc.DateUtils;
 import org.lc.misc.ExceptionUtil;
@@ -18,6 +14,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.uxl.sites.pyfia.IClsDS;
 import com.uxl.sites.pyfia.model.DbBatch;
@@ -26,11 +26,6 @@ import com.uxl.sites.pyfia.model.fin.FinCaseLList;
 import com.uxl.sites.pyfia.model.fin.FinCaseList;
 import com.uxl.sites.pyfia.model.fin.FinCaseOList;
 import com.uxl.sites.pyfia.model.fin.FinCaseSDList;
-
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Repository

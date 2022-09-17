@@ -5,14 +5,13 @@ package com.uxl.sites.pyfia.model.db;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -112,21 +111,6 @@ public class ClsFinHome extends GenericHibernateDAO {
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(ClsFin instance) {
-		log.debug("finding ClsFin instance by example");
-		try {
-			List results = sessionFactory.getCurrentSession()
-					.createCriteria("com.uxl.sites.pyfia.model.db.ClsFin")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
 			throw re;
 		}
 	}

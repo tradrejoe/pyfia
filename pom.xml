@@ -7,7 +7,9 @@
 	<packaging>war</packaging>
 	<version>1.1</version>
 	<properties>
-		<spring.version>4.0.5.RELEASE</spring.version>
+		<spring.version>5.3.9</spring.version>
+		<spring-context.version>5.3.9</spring-context.version>
+		<spring-core.version>5.3.9</spring-core.version>
 		<junit.version>4.11</junit.version>
 		<tiles.version>2.2.2</tiles.version>
 		<slf4j.version>1.5.10</slf4j.version>
@@ -19,7 +21,7 @@
 		<jdbc.initLocation>resources/db/mysql/pyfiadb_prod.sql</jdbc.initLocation>
 		<jdbc.dataLocation>resources/db/mysql/pyfiadat_prod.sql</jdbc.dataLocation>
 		<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-		<hibernate.show_sql>false</hibernate.show_sql>
+		<hibernate.show_sql>true</hibernate.show_sql>
 		<hibernate.generate_statistics>false</hibernate.generate_statistics>
 		<jpa.showSql>false</jpa.showSql>
 		<jpa.databasePlatform>oracle.toplink.essentials.platform.database.MySQL4Platform</jpa.databasePlatform>
@@ -34,17 +36,23 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-context.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-web -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+			<version>2.18.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -56,8 +64,11 @@
 			<artifactId>spring-mobile-device</artifactId>
 			<version>1.1.2.RELEASE</version>
 		</dependency>
-		<!-- dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> 
-			<version>1.1.1.RELEASE</version> </dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.1.1.RELEASE</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
@@ -114,12 +125,19 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>4.0.5.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.transaction/javax.transaction-api -->
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>javax.transaction-api</artifactId>
+			<version>1.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.0.5.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<!-- Servlet -->
 		<dependency>
@@ -153,18 +171,31 @@
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.13</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.13.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<!--scope>test</scope -->
+			<scope>test</scope>
 		</dependency>
 		<!-- Database -->
 		<dependency>
@@ -213,20 +244,34 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.orm</artifactId>
 			<version>${spring.version}</version>
 			<systemPath>${basedir}/lib/spring-orm-4.0.5.RELEASE.jar</systemPath>
 			<scope>system</scope>
-		</dependency>
+		</dependency-->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>5.3.23</version>
+		</dependency>
+
+		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.oxm</artifactId>
 			<version>${spring.version}</version>
 			<systemPath>${basedir}/lib/spring-oxm-4.0.5.RELEASE.jar</systemPath>
 			<scope>system</scope>
+		</dependency-->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-oxm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>5.3.23</version>
 		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -300,39 +345,50 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>3.5.6-Final</version>
+			<version>6.1.3.Final</version>
 		</dependency>
 		<!-- JPA -->
+		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
 		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<!--dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>com.springsource.javax.persistence</artifactId>
 			<version>1.0.0</version>
-		</dependency>
-		<dependency>
+		</dependency-->
+		<!--dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>com.springsource.org.hibernate.ejb</artifactId>
-			<version>3.4.0.GA</version>
+			<version>4.1.0.Final</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>com.springsource.org.apache.commons.logging</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
+		</dependency-->
+		<!--dependency>
 			<groupId>org.hibernate.common</groupId>
 			<artifactId>com.springsource.org.hibernate.annotations.common</artifactId>
-			<version>4.0.1.Final</version>
+			<version>4.1.0.Final</version>
 			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>org.apache.commons</groupId>
 					<artifactId>com.springsource.org.apache.commons.logging</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency-->
+
+		<dependency>
+			<groupId>com.sun.activation</groupId>
+			<artifactId>javax.activation</artifactId>
+			<version>1.2.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>javax.annotation-api</artifactId>
@@ -352,12 +408,11 @@
 		</dependency>
 
 		<!-- JAXB -->
-		<dependency>
+		<!--dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>com.springsource.javax.xml.bind</artifactId>
 			<version>2.1.7</version>
-			<!--scope>provided</scope -->
-		</dependency>
+		</dependency-->
 		<!-- JavaMail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -442,6 +497,22 @@
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-war-plugin</artifactId>
 			<version>3.3.2</version>
+		</dependency>
+		<!-- xml support outdated in jdk11+-->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -589,11 +660,11 @@
 					<fork>true</fork>
 					<verbose>true</verbose>
 					<executable>${env.JAVA_HOME}/bin/javac</executable>
-					<source>11</source>
-					<target>11</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<showWarnings>true</showWarnings>
 				</configuration>
-				<version>3.5.1</version>
+				<version>3.8.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -649,7 +720,16 @@
 								<include>**/*.sql</include>
 							</includes>
 						</resource>
+						<resource>
+							<directory>${project.basedir}/lib</directory>
+							<targetPath>WEB-INF/lib</targetPath>
+							<filtering>false</filtering>
+							<includes>
+								<include>**/*.jar</include>
+							</includes>
+						</resource>
 					</webResources>
+
 				</configuration>
 				<version>3.3.2</version>
 			</plugin>

@@ -1,13 +1,7 @@
 package com.uxl.sites.pyfia.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +18,6 @@ import org.lc.model.CorrGraphLink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import weka.classifiers.evaluation.Evaluation;
-import weka.classifiers.trees.RandomForest;
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.core.converters.ConverterUtils.DataSource;
-
 import com.uxl.sites.pyfia.IClsDS;
 import com.uxl.sites.pyfia.PyfiaTest;
 import com.uxl.sites.pyfia.jdbc.ClsDS;
@@ -47,6 +33,13 @@ import com.uxl.sites.pyfia.model.fin.IForecastRequest;
 import com.uxl.sites.pyfia.model.spm.svm;
 import com.uxl.sites.pyfia.web.AbstractPriceDownloader;
 import com.uxl.sites.pyfia.web.YPriceDownloader;
+
+import weka.classifiers.evaluation.Evaluation;
+import weka.classifiers.trees.RandomForest;
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
 
 //import weka.classifiers.Evaluation;
 //import weka.classifiers.bayes.BayesNet;

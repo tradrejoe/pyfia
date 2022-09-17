@@ -3,7 +3,6 @@ package com.uxl.sites.pyfia.model.cache;
 import java.io.ByteArrayInputStream;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -15,15 +14,7 @@ import java.util.TreeMap;
 import org.apache.log4j.Logger;
 import org.lc.misc.CollectionUtil;
 import org.lc.misc.DateUtils;
-import org.lc.misc.JsonUtil;
-import org.lc.misc.StringUtil;
 import org.lc.model.CKey;
-import org.lc.web.controller.BaseController;
-
-import weka.core.Attribute;
-import weka.core.DenseInstance;
-import weka.core.Instances;
-import weka.core.converters.ConverterUtils.DataSource;
 
 import com.uxl.sites.pyfia.IClsDS;
 import com.uxl.sites.pyfia.exceptions.NoDataException;
@@ -38,6 +29,11 @@ import com.uxl.sites.pyfia.model.fin.RewindableByteArrayInputStream;
 import com.uxl.sites.pyfia.model.fin.exceptions.NegativeLagException;
 import com.uxl.sites.pyfia.model.fin.exceptions.NoPredictorsException;
 import com.uxl.sites.pyfia.web.AbstractPriceDownloader;
+
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
 
 public class CacheFinCls extends TreeMap<String, List<FinCaseList>> {
 	
