@@ -18,10 +18,10 @@
 
 	<!-- Transaction manager for a single JDBC DataSource (alternative to JTA) -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-			p:dataSource-ref="dataSource"/>
+			p:dataSource-ref="pfDataSource"/>
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="pfDataSource" />
 	</bean>
 	
 	<!-- Transaction manager that delegates to JTA (for a transactional JNDI DataSource) -->
@@ -35,7 +35,6 @@
 		Exporter that exposes the Clinic DAO and the CallMonitoringAspect via JMX,
 		based on the @ManagedResource, @ManagedAttribute, and @ManagedOperation annotations.
 	-->
-	<context:mbean-export/>
 
 	<!-- bean id="ClsDS" class="com.uxl.sites.pyfia.jdbc.ClsDS"/-->
 

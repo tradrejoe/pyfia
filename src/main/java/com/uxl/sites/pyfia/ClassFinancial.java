@@ -1,7 +1,7 @@
 package com.uxl.sites.pyfia;
 
 public class ClassFinancial {
-
+	java.sql.DriverManager mg;
 	String name;
 	String altname;
 	String description;

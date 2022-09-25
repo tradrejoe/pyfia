@@ -149,4 +149,6 @@
 
 	<bean name="responseContextHolderFilterBean"
 		class="org.lc.web.filters.ResponseContextHolderFilter" />
+
+	<!--context:mbean-export /-->
 </beans>

@@ -18,11 +18,11 @@
 	<!-- context:property-placeholder location="resources/jdbc.properties"/ -->
 
 	<!-- DataSource configuration for Apache Commons DBCP. -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+	<bean id="pfDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"
 			p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-			p:username="${jdbc.username}" p:password="${jdbc.pwd}"
+			p:username="root" p:password="$n00pL10n"
 			p:testOnBorrow="true" p:validationQuery="SELECT 1 FROM DUAL" 
-			p:poolPreparedStatements="true" p:maxWait="30000"
+			p:poolPreparedStatements="true"
 			p:accessToUnderlyingConnectionAllowed="true"
 	/>
 	

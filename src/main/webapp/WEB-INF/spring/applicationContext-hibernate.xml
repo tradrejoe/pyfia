@@ -21,7 +21,7 @@
 
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-			p:dataSource-ref="dataSource">
+			p:dataSource-ref="pfDataSource">
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
@@ -62,7 +62,6 @@
 		Exporter that exposes the Hibernate statistics service via JMX. Autodetects the
 		service MBean, using its bean name as JMX object name.
 	-->
-	<context:mbean-export/>
 
 	<!-- bean id="HibernateDS" class="com.uxl.sites.pyfia.hibernate.HibernateDS"/-->
 

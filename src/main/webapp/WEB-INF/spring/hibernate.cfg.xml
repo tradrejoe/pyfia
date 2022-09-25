@@ -4,11 +4,11 @@
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory name="sessionFactory">
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">saturn99</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pyfia</property>
+        <property name="hibernate.connection.driver_class">${jdbc.driverClassName}</property>
+        <property name="hibernate.connection.password">$n00pL10n</property>
+        <property name="hibernate.connection.url">${jdbc.url}</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.default_schema">pyfia</property>
+        <property name="hibernate.default_schema">pyfiadb</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     </session-factory>
 </hibernate-configuration>
