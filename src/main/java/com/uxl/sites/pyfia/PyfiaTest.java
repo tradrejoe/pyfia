@@ -99,6 +99,9 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 		return this.pd;
 	}
 
+	@Autowired
+	CacheFinCls cacheFinCls;
+	
 	public void init() {
 		if (!binit) {
 			System.out.println("init...");
@@ -330,7 +333,7 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 		cal.add(Calendar.DAY_OF_MONTH, -5);
 //		Date dt = DateUtils.getDateNotime();
 		Date dt = cal.getTime();
-		CacheFinCls cacheFinCls = CacheFinCls.getInstance(this.clsDs, this.pd);
+		
 		PearsonsCorrelation ocorr = new PearsonsCorrelation();
 		TreeMap<CKey, Double> dfinCorr = clsDs.getDfinCorr();
 		for (int s=0; s<symbols.length; s++) {
@@ -476,6 +479,12 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 		return out;
 	}
 
+	public CacheFinCls getCacheFinCls() {
+		return cacheFinCls;
+	}
+	public void setCacheFinCls(CacheFinCls cacheFinCls) {
+		this.cacheFinCls = cacheFinCls;
+	}
 	@Test
 	public void testMATrade() {
 		if (System.getProperty(MAVEN_TEST_MA_TRADE)==null ||
@@ -652,7 +661,7 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 
 			this.cls = cls;
 			this.ds = ds;
-			CacheFinCls cfc = CacheFinCls.getInstance(ds.getCFC(), ds.getPD());
+			CacheFinCls cfc = ds.getCacheFinCls();
 			lst = cfc.fetch(cls).get(0);
 			Date[] acse = lst.keySet().toArray(new Date[]{});
 			Double[] aval = lst.values().toArray(new Double[]{});
@@ -907,7 +916,7 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 						tmpattr.put(abscorr, ck);
 					}
 					ArrayList<String> predictors = new ArrayList<String>();
-					CacheFinCls cacheFinCls = CacheFinCls.getInstance(clsDs, pd);
+					CacheFinCls cacheFinCls = this.getCacheFinCls();
 					for (Double d : tmpattr.keySet()) {
 						if (d<.1) continue;
 						List kl = tmpattr.get(d).getKeys();
@@ -1130,7 +1139,7 @@ public class PyfiaTest extends AbstractJUnit4SpringContextTests implements IPfTe
 						tmpattr.put(new Double(Math.abs(corr.doubleValue())), ck);
 					}
 					ArrayList<String> predictors = new ArrayList<String>();
-					CacheFinCls cacheFinCls = CacheFinCls.getInstance(clsDs, pd);
+					CacheFinCls cacheFinCls = this.getCacheFinCls();
 					for (Double d : tmpattr.keySet()) {
 						List kl = tmpattr.get(d).getKeys();
 						if (kl!=null && kl.size()>=2) {

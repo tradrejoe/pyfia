@@ -18,4 +18,6 @@ public interface IClsDS {
 	public void exec(DbBatch dbBatch);
 	
 	public TreeMap<CKey, Double> getDfinCorr();
+	
+	public TreeMap<CKey, Double> setDfinCorr(CKey key, double corr);
 }
