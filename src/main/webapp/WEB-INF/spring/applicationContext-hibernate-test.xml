@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Application context definition for Pyfia on Hibernate.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+    <!-- import the dataSource definition -->
+    <import resource="applicationContext-dataSource-test.xml"/>
+
+	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
+	<!-- (in this case, Hibernate-related settings for the sessionFactory definition below) -->
+	<!-- context:property-placeholder location="classpath:jdbc.properties"/ -->
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+			p:dataSource-ref="dataSource">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+			</props>
+		</property>
+		<property name="eventListeners">
+			<map>
+				<entry key="merge">
+					<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+				</entry>
+			</map>
+		</property>
+	    <property name="mappingResources">
+	        <list>
+	            <value>com/uxl/sites/pyfia/model/db/ClsFin.hbm.xml</value>
+	            <value>com/uxl/sites/pyfia/model/db/DfinCorr.hbm.xml</value>
+	            <value>com/uxl/sites/pyfia/model/db/Users.hbm.xml</value>
+	            <value>com/uxl/sites/pyfia/model/db/UsersAttr.hbm.xml</value>
+	        </list>
+	    </property>
+	</bean>
+
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<!-- bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+			p:sessionFactory-ref="sessionFactory"/-->
+
+	<!-- Transaction manager that delegates to JTA (for a transactional JNDI DataSource) -->
+	<!--
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>
+	-->
+
+
+	<!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
+
+	<!--
+		Exporter that exposes the Hibernate statistics service via JMX. Autodetects the
+		service MBean, using its bean name as JMX object name.
+	-->
+	<context:mbean-export/>
+
+	<!-- bean id="HibernateDS" class="com.uxl.sites.pyfia.hibernate.HibernateDS"/-->
+
+	<!-- Hibernate's JMX statistics service -->
+	<!-- bean name="pyfia:type=HibernateStatistics" class="org.hibernate.jmx.StatisticsService" autowire="byName"/ -->
+
+</beans>
